@@ -10,6 +10,43 @@
 		D1D11D2E1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D11D341B7CCF3600EFFCA4 /* LOZIPFileWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */; };
 		D1D11D3B1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */; };
+		D1D11D6B1B7CD12600EFFCA4 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D461B7CD12500EFFCA4 /* aes.h */; };
+		D1D11D6C1B7CD12600EFFCA4 /* aes_via_ace.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D471B7CD12500EFFCA4 /* aes_via_ace.h */; };
+		D1D11D6D1B7CD12600EFFCA4 /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D481B7CD12500EFFCA4 /* aescrypt.c */; };
+		D1D11D6E1B7CD12600EFFCA4 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D491B7CD12500EFFCA4 /* aeskey.c */; };
+		D1D11D6F1B7CD12600EFFCA4 /* aesopt.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D4A1B7CD12500EFFCA4 /* aesopt.h */; };
+		D1D11D701B7CD12600EFFCA4 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D4B1B7CD12500EFFCA4 /* aestab.c */; };
+		D1D11D711B7CD12600EFFCA4 /* aestab.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D4C1B7CD12500EFFCA4 /* aestab.h */; };
+		D1D11D721B7CD12600EFFCA4 /* brg_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D4D1B7CD12500EFFCA4 /* brg_endian.h */; };
+		D1D11D731B7CD12600EFFCA4 /* brg_types.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D4E1B7CD12500EFFCA4 /* brg_types.h */; };
+		D1D11D741B7CD12600EFFCA4 /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D4F1B7CD12500EFFCA4 /* entropy.c */; };
+		D1D11D751B7CD12600EFFCA4 /* entropy.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D501B7CD12500EFFCA4 /* entropy.h */; };
+		D1D11D761B7CD12600EFFCA4 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D511B7CD12500EFFCA4 /* fileenc.c */; };
+		D1D11D771B7CD12600EFFCA4 /* fileenc.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D521B7CD12500EFFCA4 /* fileenc.h */; };
+		D1D11D781B7CD12600EFFCA4 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D531B7CD12500EFFCA4 /* hmac.c */; };
+		D1D11D791B7CD12600EFFCA4 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D541B7CD12500EFFCA4 /* hmac.h */; };
+		D1D11D7A1B7CD12600EFFCA4 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D551B7CD12500EFFCA4 /* Makefile */; };
+		D1D11D7B1B7CD12600EFFCA4 /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D561B7CD12500EFFCA4 /* prng.c */; };
+		D1D11D7C1B7CD12600EFFCA4 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D571B7CD12500EFFCA4 /* prng.h */; };
+		D1D11D7D1B7CD12600EFFCA4 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D581B7CD12500EFFCA4 /* pwd2key.c */; };
+		D1D11D7E1B7CD12600EFFCA4 /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D591B7CD12500EFFCA4 /* pwd2key.h */; };
+		D1D11D7F1B7CD12600EFFCA4 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D5A1B7CD12500EFFCA4 /* sha1.c */; };
+		D1D11D801B7CD12600EFFCA4 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D5B1B7CD12500EFFCA4 /* sha1.h */; };
+		D1D11D811B7CD12600EFFCA4 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D5C1B7CD12500EFFCA4 /* crypt.h */; };
+		D1D11D821B7CD12600EFFCA4 /* ioapi_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D5D1B7CD12500EFFCA4 /* ioapi_buf.c */; };
+		D1D11D831B7CD12600EFFCA4 /* ioapi_buf.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D5E1B7CD12500EFFCA4 /* ioapi_buf.h */; };
+		D1D11D841B7CD12600EFFCA4 /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D5F1B7CD12500EFFCA4 /* ioapi_mem.c */; };
+		D1D11D851B7CD12600EFFCA4 /* ioapi_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D601B7CD12500EFFCA4 /* ioapi_mem.h */; };
+		D1D11D861B7CD12600EFFCA4 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D611B7CD12600EFFCA4 /* ioapi.c */; };
+		D1D11D871B7CD12600EFFCA4 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D621B7CD12600EFFCA4 /* ioapi.h */; };
+		D1D11D881B7CD12600EFFCA4 /* iowin32.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D631B7CD12600EFFCA4 /* iowin32.c */; };
+		D1D11D891B7CD12600EFFCA4 /* iowin32.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D641B7CD12600EFFCA4 /* iowin32.h */; };
+		D1D11D8A1B7CD12600EFFCA4 /* miniunz.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D651B7CD12600EFFCA4 /* miniunz.c */; };
+		D1D11D8B1B7CD12600EFFCA4 /* minizip.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D661B7CD12600EFFCA4 /* minizip.c */; };
+		D1D11D8C1B7CD12600EFFCA4 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D671B7CD12600EFFCA4 /* unzip.c */; };
+		D1D11D8D1B7CD12600EFFCA4 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D681B7CD12600EFFCA4 /* unzip.h */; };
+		D1D11D8E1B7CD12600EFFCA4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D691B7CD12600EFFCA4 /* zip.c */; };
+		D1D11D8F1B7CD12600EFFCA4 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D6A1B7CD12600EFFCA4 /* zip.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +66,43 @@
 		D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOZIPFileWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D391B7CCF3600EFFCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LOZIPFileWrapperTests.m; sourceTree = "<group>"; };
+		D1D11D461B7CD12500EFFCA4 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		D1D11D471B7CD12500EFFCA4 /* aes_via_ace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes_via_ace.h; sourceTree = "<group>"; };
+		D1D11D481B7CD12500EFFCA4 /* aescrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aescrypt.c; sourceTree = "<group>"; };
+		D1D11D491B7CD12500EFFCA4 /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
+		D1D11D4A1B7CD12500EFFCA4 /* aesopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aesopt.h; sourceTree = "<group>"; };
+		D1D11D4B1B7CD12500EFFCA4 /* aestab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aestab.c; sourceTree = "<group>"; };
+		D1D11D4C1B7CD12500EFFCA4 /* aestab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aestab.h; sourceTree = "<group>"; };
+		D1D11D4D1B7CD12500EFFCA4 /* brg_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_endian.h; sourceTree = "<group>"; };
+		D1D11D4E1B7CD12500EFFCA4 /* brg_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_types.h; sourceTree = "<group>"; };
+		D1D11D4F1B7CD12500EFFCA4 /* entropy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = entropy.c; sourceTree = "<group>"; };
+		D1D11D501B7CD12500EFFCA4 /* entropy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entropy.h; sourceTree = "<group>"; };
+		D1D11D511B7CD12500EFFCA4 /* fileenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileenc.c; sourceTree = "<group>"; };
+		D1D11D521B7CD12500EFFCA4 /* fileenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileenc.h; sourceTree = "<group>"; };
+		D1D11D531B7CD12500EFFCA4 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		D1D11D541B7CD12500EFFCA4 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		D1D11D551B7CD12500EFFCA4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		D1D11D561B7CD12500EFFCA4 /* prng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prng.c; sourceTree = "<group>"; };
+		D1D11D571B7CD12500EFFCA4 /* prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng.h; sourceTree = "<group>"; };
+		D1D11D581B7CD12500EFFCA4 /* pwd2key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pwd2key.c; sourceTree = "<group>"; };
+		D1D11D591B7CD12500EFFCA4 /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
+		D1D11D5A1B7CD12500EFFCA4 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		D1D11D5B1B7CD12500EFFCA4 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		D1D11D5C1B7CD12500EFFCA4 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = minizip/crypt.h; sourceTree = SOURCE_ROOT; };
+		D1D11D5D1B7CD12500EFFCA4 /* ioapi_buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi_buf.c; path = minizip/ioapi_buf.c; sourceTree = SOURCE_ROOT; };
+		D1D11D5E1B7CD12500EFFCA4 /* ioapi_buf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi_buf.h; path = minizip/ioapi_buf.h; sourceTree = SOURCE_ROOT; };
+		D1D11D5F1B7CD12500EFFCA4 /* ioapi_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi_mem.c; path = minizip/ioapi_mem.c; sourceTree = SOURCE_ROOT; };
+		D1D11D601B7CD12500EFFCA4 /* ioapi_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi_mem.h; path = minizip/ioapi_mem.h; sourceTree = SOURCE_ROOT; };
+		D1D11D611B7CD12600EFFCA4 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = minizip/ioapi.c; sourceTree = SOURCE_ROOT; };
+		D1D11D621B7CD12600EFFCA4 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = minizip/ioapi.h; sourceTree = SOURCE_ROOT; };
+		D1D11D631B7CD12600EFFCA4 /* iowin32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iowin32.c; path = minizip/iowin32.c; sourceTree = SOURCE_ROOT; };
+		D1D11D641B7CD12600EFFCA4 /* iowin32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iowin32.h; path = minizip/iowin32.h; sourceTree = SOURCE_ROOT; };
+		D1D11D651B7CD12600EFFCA4 /* miniunz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = miniunz.c; path = minizip/miniunz.c; sourceTree = SOURCE_ROOT; };
+		D1D11D661B7CD12600EFFCA4 /* minizip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = minizip.c; path = minizip/minizip.c; sourceTree = SOURCE_ROOT; };
+		D1D11D671B7CD12600EFFCA4 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = minizip/unzip.c; sourceTree = SOURCE_ROOT; };
+		D1D11D681B7CD12600EFFCA4 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = minizip/unzip.h; sourceTree = SOURCE_ROOT; };
+		D1D11D691B7CD12600EFFCA4 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zip.c; path = minizip/zip.c; sourceTree = SOURCE_ROOT; };
+		D1D11D6A1B7CD12600EFFCA4 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = minizip/zip.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +145,7 @@
 		D1D11D2A1B7CCF3500EFFCA4 /* LOZIPFileWrapper */ = {
 			isa = PBXGroup;
 			children = (
+				D1D11D441B7CD0FB00EFFCA4 /* minizip */,
 				D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */,
 				D1D11D2B1B7CCF3500EFFCA4 /* Supporting Files */,
 			);
@@ -102,6 +177,59 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D1D11D441B7CD0FB00EFFCA4 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				D1D11D451B7CD12500EFFCA4 /* aes */,
+				D1D11D5C1B7CD12500EFFCA4 /* crypt.h */,
+				D1D11D5D1B7CD12500EFFCA4 /* ioapi_buf.c */,
+				D1D11D5E1B7CD12500EFFCA4 /* ioapi_buf.h */,
+				D1D11D5F1B7CD12500EFFCA4 /* ioapi_mem.c */,
+				D1D11D601B7CD12500EFFCA4 /* ioapi_mem.h */,
+				D1D11D611B7CD12600EFFCA4 /* ioapi.c */,
+				D1D11D621B7CD12600EFFCA4 /* ioapi.h */,
+				D1D11D631B7CD12600EFFCA4 /* iowin32.c */,
+				D1D11D641B7CD12600EFFCA4 /* iowin32.h */,
+				D1D11D651B7CD12600EFFCA4 /* miniunz.c */,
+				D1D11D661B7CD12600EFFCA4 /* minizip.c */,
+				D1D11D671B7CD12600EFFCA4 /* unzip.c */,
+				D1D11D681B7CD12600EFFCA4 /* unzip.h */,
+				D1D11D691B7CD12600EFFCA4 /* zip.c */,
+				D1D11D6A1B7CD12600EFFCA4 /* zip.h */,
+			);
+			name = minizip;
+			sourceTree = "<group>";
+		};
+		D1D11D451B7CD12500EFFCA4 /* aes */ = {
+			isa = PBXGroup;
+			children = (
+				D1D11D461B7CD12500EFFCA4 /* aes.h */,
+				D1D11D471B7CD12500EFFCA4 /* aes_via_ace.h */,
+				D1D11D481B7CD12500EFFCA4 /* aescrypt.c */,
+				D1D11D491B7CD12500EFFCA4 /* aeskey.c */,
+				D1D11D4A1B7CD12500EFFCA4 /* aesopt.h */,
+				D1D11D4B1B7CD12500EFFCA4 /* aestab.c */,
+				D1D11D4C1B7CD12500EFFCA4 /* aestab.h */,
+				D1D11D4D1B7CD12500EFFCA4 /* brg_endian.h */,
+				D1D11D4E1B7CD12500EFFCA4 /* brg_types.h */,
+				D1D11D4F1B7CD12500EFFCA4 /* entropy.c */,
+				D1D11D501B7CD12500EFFCA4 /* entropy.h */,
+				D1D11D511B7CD12500EFFCA4 /* fileenc.c */,
+				D1D11D521B7CD12500EFFCA4 /* fileenc.h */,
+				D1D11D531B7CD12500EFFCA4 /* hmac.c */,
+				D1D11D541B7CD12500EFFCA4 /* hmac.h */,
+				D1D11D551B7CD12500EFFCA4 /* Makefile */,
+				D1D11D561B7CD12500EFFCA4 /* prng.c */,
+				D1D11D571B7CD12500EFFCA4 /* prng.h */,
+				D1D11D581B7CD12500EFFCA4 /* pwd2key.c */,
+				D1D11D591B7CD12500EFFCA4 /* pwd2key.h */,
+				D1D11D5A1B7CD12500EFFCA4 /* sha1.c */,
+				D1D11D5B1B7CD12500EFFCA4 /* sha1.h */,
+			);
+			name = aes;
+			path = minizip/aes;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -109,7 +237,26 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1D11D831B7CD12600EFFCA4 /* ioapi_buf.h in Headers */,
+				D1D11D851B7CD12600EFFCA4 /* ioapi_mem.h in Headers */,
+				D1D11D801B7CD12600EFFCA4 /* sha1.h in Headers */,
+				D1D11D751B7CD12600EFFCA4 /* entropy.h in Headers */,
+				D1D11D7E1B7CD12600EFFCA4 /* pwd2key.h in Headers */,
+				D1D11D6B1B7CD12600EFFCA4 /* aes.h in Headers */,
+				D1D11D711B7CD12600EFFCA4 /* aestab.h in Headers */,
+				D1D11D811B7CD12600EFFCA4 /* crypt.h in Headers */,
+				D1D11D891B7CD12600EFFCA4 /* iowin32.h in Headers */,
+				D1D11D771B7CD12600EFFCA4 /* fileenc.h in Headers */,
+				D1D11D6C1B7CD12600EFFCA4 /* aes_via_ace.h in Headers */,
+				D1D11D8D1B7CD12600EFFCA4 /* unzip.h in Headers */,
+				D1D11D7C1B7CD12600EFFCA4 /* prng.h in Headers */,
+				D1D11D791B7CD12600EFFCA4 /* hmac.h in Headers */,
+				D1D11D6F1B7CD12600EFFCA4 /* aesopt.h in Headers */,
 				D1D11D2E1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h in Headers */,
+				D1D11D871B7CD12600EFFCA4 /* ioapi.h in Headers */,
+				D1D11D731B7CD12600EFFCA4 /* brg_types.h in Headers */,
+				D1D11D8F1B7CD12600EFFCA4 /* zip.h in Headers */,
+				D1D11D721B7CD12600EFFCA4 /* brg_endian.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +356,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1D11D841B7CD12600EFFCA4 /* ioapi_mem.c in Sources */,
+				D1D11D861B7CD12600EFFCA4 /* ioapi.c in Sources */,
+				D1D11D821B7CD12600EFFCA4 /* ioapi_buf.c in Sources */,
+				D1D11D8E1B7CD12600EFFCA4 /* zip.c in Sources */,
+				D1D11D7F1B7CD12600EFFCA4 /* sha1.c in Sources */,
+				D1D11D781B7CD12600EFFCA4 /* hmac.c in Sources */,
+				D1D11D6D1B7CD12600EFFCA4 /* aescrypt.c in Sources */,
+				D1D11D701B7CD12600EFFCA4 /* aestab.c in Sources */,
+				D1D11D881B7CD12600EFFCA4 /* iowin32.c in Sources */,
+				D1D11D6E1B7CD12600EFFCA4 /* aeskey.c in Sources */,
+				D1D11D761B7CD12600EFFCA4 /* fileenc.c in Sources */,
+				D1D11D8B1B7CD12600EFFCA4 /* minizip.c in Sources */,
+				D1D11D8C1B7CD12600EFFCA4 /* unzip.c in Sources */,
+				D1D11D7A1B7CD12600EFFCA4 /* Makefile in Sources */,
+				D1D11D7B1B7CD12600EFFCA4 /* prng.c in Sources */,
+				D1D11D7D1B7CD12600EFFCA4 /* pwd2key.c in Sources */,
+				D1D11D741B7CD12600EFFCA4 /* entropy.c in Sources */,
+				D1D11D8A1B7CD12600EFFCA4 /* miniunz.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
