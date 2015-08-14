@@ -13,6 +13,8 @@ Features:
 * `-[LOZIPFileWrapper contentAttributesOfZIPFileIncludingFolders:error:]` dictionary of item details like compressed size, size, encryption in the zip archive
 * `-[LOZIPFileWrapper contentsAtPath:error:]` NSData for item in the zip archive
 * `-[LOZIPFileWrapper writeContentOfZIPFileToURL:options:error:error` extract zip archive to a folder.
+  
+It requires only 10 files compared to the ~40 files of [ZipZap](https://github.com/pixelglow/ZipZap/tree/master/ZipZap).
 
 ## Adding to your project
 
@@ -21,7 +23,7 @@ Features:
  
 ## Write Support
  
- My usage just required reading zips. If somebody is intrested in write support I would suggest to start  with having a look at minizip.c [https://github.com/nmoinvaz/minizip/blob/master/minizip.c]
+ My usage just required reading zips. If somebody is intrested in write support I would suggest to start  with having a look at [minizip.c](https://github.com/nmoinvaz/minizip/blob/master/minizip.c).
 
 ## License
 
