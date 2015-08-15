@@ -21,11 +21,41 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    NSString *path = [self _cachesPath:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testEmpty {
+    NSURL *URL = [[NSBundle bundleForClass:[self class]] URLForResource:@"Empty" withExtension:@""];
+    NSError *error = nil;
+    LOZIPFileWrapper *fileWrapper = [[LOZIPFileWrapper alloc] initWithURL:URL password:nil error:&error];
+    XCTAssert(fileWrapper == nil, @"empty test");
+    XCTAssert(error.code == LOZIPFileWrapperErrorDocumentStart, @"empty test");
+    
+    NSError *error2 = nil;
+    LOZIPFileWrapper *fileWrapper2 = [[LOZIPFileWrapper alloc] initWithZIPData:[NSData data] password:nil error:&error2];
+    XCTAssert(fileWrapper2 == nil, @"empty test");
+    XCTAssert(error2.code == LOZIPFileWrapperErrorDocumentStart, @"empty test");
+}
+
+- (void)testNotAZipFile {
+    NSURL *URL = [[NSBundle bundleForClass:[self class]] URLForResource:@"HelloWorld" withExtension:@"txt"];
+    NSError *error = nil;
+    LOZIPFileWrapper *fileWrapper = [[LOZIPFileWrapper alloc] initWithURL:URL password:nil error:&error];
+    XCTAssert(fileWrapper == nil, @"txt test");
+    XCTAssert(error.code == LOZIPFileWrapperErrorDocumentStart, @"txt test");
+    
+    
+    NSError *error2 = nil;
+    LOZIPFileWrapper *fileWrapper2 = [[LOZIPFileWrapper alloc] initWithZIPData:[NSData dataWithContentsOfURL:URL] password:nil error:&error2];
+    XCTAssert(fileWrapper2 == nil, @"txt test");
+    XCTAssert(error2.code == LOZIPFileWrapperErrorDocumentStart, @"txt test");
 }
 
 - (void)testExample {
@@ -56,7 +86,8 @@
     
     NSError *fileNotFoundError = nil;
     NSData *fileNotFoundData = [fileWrapper contentsAtPath:@"lala" error:&fileNotFoundError];
-    XCTAssert(fileNotFoundData == nil && fileNotFoundError.code == LOZIPFileWrapperErrorFileNotFound, @"Pass");
+    XCTAssert(fileNotFoundData == nil, @"Pass");
+    XCTAssert(fileNotFoundError.code == LOZIPFileWrapperErrorFileNotFound, @"Pass");
     
     NSData *contentTypesData = [fileWrapper contentsAtPath:@"[Content_Types].xml" error:NULL];
     NSString *contentTypesString = [[NSString alloc] initWithData:contentTypesData encoding:NSUTF8StringEncoding];
@@ -95,14 +126,17 @@
     NSString *zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"PasswordArchive" ofType:@"zip"];
     NSString *outputPath = [self _cachesPath:@"Password"];
     
-    LOZIPFileWrapper *fileWrapper = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:@"passw0rd" error:NULL];
-    [fileWrapper writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:NULL];
+    LOZIPFileWrapper *fileWrapper1 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:@"passw0rd" error:NULL];
+    NSError *error1 = nil;
+    BOOL rtn1 = [fileWrapper1 writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:&error1];
+    XCTAssert(rtn1 == YES , @"Pass");
     
-    BOOL rtn = [fileWrapper writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:NULL];
-    XCTAssert(rtn == YES , @"Pass");
     
-    NSArray *contentsOfDirectory =[[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:outputPath] includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:NULL];
-    XCTAssert([contentsOfDirectory count] == 4 , @"Pass");
+    
+    NSError *error2 = nil;
+    LOZIPFileWrapper *fileWrapper2 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:@"Hello" error:&error2];
+    XCTAssert(fileWrapper2 == nil , @"Password");
+    XCTAssert(error2.code == LOZIPFileWrapperErrorWrongPassword, @"Password");
 }
 
 #pragma mark - Private

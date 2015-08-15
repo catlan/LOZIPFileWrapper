@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D121DD6E1B7F32F5003EA0AA /* Empty in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6C1B7F32F5003EA0AA /* Empty */; };
+		D121DD6F1B7F32F5003EA0AA /* HelloWorld.txt in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */; };
 		D1D11D2E1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D11D341B7CCF3600EFFCA4 /* LOZIPFileWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */; };
 		D1D11D3B1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D121DD6C1B7F32F5003EA0AA /* Empty */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Empty; path = Resources/Empty; sourceTree = "<group>"; };
+		D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HelloWorld.txt; path = Resources/HelloWorld.txt; sourceTree = "<group>"; };
 		D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LOZIPFileWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D2C1B7CCF3500EFFCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOZIPFileWrapper.h; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				D1D11D391B7CCF3600EFFCA4 /* Info.plist */,
+				D121DD6C1B7F32F5003EA0AA /* Empty */,
+				D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */,
 				D1D11DA71B7E3B9C00EFFCA4 /* HelloWorld.zip */,
 				D1D11DAB1B7E416D00EFFCA4 /* PasswordArchive.zip */,
 			);
@@ -276,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D121DD6F1B7F32F5003EA0AA /* HelloWorld.txt in Resources */,
+				D121DD6E1B7F32F5003EA0AA /* Empty in Resources */,
 				D1D11DA91B7E3B9C00EFFCA4 /* HelloWorld.zip in Resources */,
 				D1D11DAC1B7E416D00EFFCA4 /* PasswordArchive.zip in Resources */,
 			);
@@ -483,6 +491,7 @@
 				D1D11D401B7CCF3600EFFCA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +500,7 @@
 				D1D11D431B7CCF3600EFFCA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
