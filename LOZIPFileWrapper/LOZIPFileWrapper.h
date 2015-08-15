@@ -14,11 +14,12 @@ FOUNDATION_EXTERN NSString *const LOZIPFileWrapperCompresseRation;
 FOUNDATION_EXTERN NSString *const LOZIPFileWrapperEncrypted;
 
 FOUNDATION_EXTERN NSString *const LOZIPFileWrapperErrorDomain;
+FOUNDATION_EXTERN NSString *const LOZIPFileWrapperMinizipErrorCode;
 
 typedef NS_ENUM (NSInteger, LOZIPFileWrapperError) {
     LOZIPFileWrapperErrorInternal = 1,
     LOZIPFileWrapperErrorDocumentStart,
-    LOZIPFileWrapperErrorEmptyDocument,
+    LOZIPFileWrapperErrorWrongPassword,
     LOZIPFileWrapperErrorPrematureDocumentEnd,
     LOZIPFileWrapperErrorFileNotFound,
 };

@@ -15,6 +15,47 @@
 #include <sys/stat.h>
 
 
+#define NSERROR_GO_TO_FIRST_FILE(error, err) if (error) { \
+        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGoToFirstFile", err]; \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
+        *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];  \
+    }
+#define NSERROR_GET_CURRENT_FILE_INFO(error, err) if (error) { \
+        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGetCurrentFileInfo", err]; \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
+        *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];  \
+    }
+#define NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err) if (error) { \
+        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzOpenCurrentFilePassword", err]; \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
+        *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];  \
+    }
+#define NSERROR_MALLOC(error, err) if (error) { \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"Error allocating memory"}; \
+        *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:err userInfo:userInfo]; \
+    }
+#define NSERROR_READ_CURRENT_FILE(error, err) if (error) { \
+        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzReadCurrentFile", err]; \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
+        *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorPrematureDocumentEnd userInfo:userInfo];  \
+    }
+#define NSERROR_CLOSE_CURRENT_FILE(error, err) if (error) { \
+        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzCloseCurrentFile", err]; \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
+        if (*error) { \
+            NSError *underlyingError = *error; \
+            userInfo = @{ NSUnderlyingErrorKey : underlyingError, NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
+        } \
+        *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];  \
+    }
+#define NSERROR_GO_TO_NEXT_FILE(error, err) if (error) { \
+        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGoToNextFile", err]; \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
+        *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];  \
+    }
+
+
+
 #define CHUNK 16384
 
 #define WRITEBUFFERSIZE (8192)
@@ -25,6 +66,7 @@ NSString *const LOZIPFileWrapperCompressedSize = @"LOZIPFileWrapperCompressedSiz
 NSString *const LOZIPFileWrapperCompresseRation = @"LOZIPFileWrapperCompresseRation";
 NSString *const LOZIPFileWrapperEncrypted = @"LOZIPFileWrapperEncrypted";
 NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
+NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain";
 
 @interface LOZIPFileWrapper () {
     zipFile zip;
@@ -51,12 +93,16 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
         zip = unzOpen((const char*)[[URL path] UTF8String]);
         if (zip == NULL)
         {
-            NSString *desc = @"error in unzOpen";
-            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"error in unzOpen" };
             if (error)
             {
-                *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
+                *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorDocumentStart userInfo:userInfo];
             }
+            return nil;
+        }
+        
+        if (![self openWithError:error])
+        {
             return nil;
         }
     }
@@ -85,12 +131,16 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
         zip = unzOpen2("__notused__", &filefunc32);
         if (zip == NULL)
         {
-            NSString *desc = @"error in unzOpen2";
-            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"error in unzOpen2" };
             if (error)
             {
-                *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
+                *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorDocumentStart userInfo:userInfo];
             }
+            return nil;
+        }
+        
+        if (![self openWithError:error])
+        {
             return nil;
         }
     }
@@ -111,6 +161,75 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
         }
         free(unzmem);
     }
+}
+
+- (BOOL)openWithError:(NSError **)error
+{
+    unz_file_info64 file_info = {0};
+    void* buf = NULL;
+    uInt size_buf = 256; // use smaller buffer here
+    int err = UNZ_OK;
+    int errclose = UNZ_OK;
+    
+    err = unzGoToFirstFile(zip);
+    if (err != UNZ_OK)
+    {
+        NSERROR_GO_TO_FIRST_FILE(error, err);
+        return NO;
+    }
+    
+    err = unzGetCurrentFileInfo64(zip, &file_info, NULL, 0, NULL, 0, NULL, 0);
+    if (err != UNZ_OK)
+    {
+        NSERROR_GET_CURRENT_FILE_INFO(error, err);
+        return NO;
+    }
+    
+    err = unzOpenCurrentFilePassword(zip, [self.password UTF8String]);
+    if (err != UNZ_OK)
+    {
+        NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err);
+        return NO;
+    }
+    
+    buf = (void*)malloc(size_buf);
+    if (buf == NULL)
+    {
+        NSERROR_MALLOC(error, errno);
+        return NO;
+    }
+    
+    /* Read from the zip, unzip to buffer */
+    int byteCopied = unzReadCurrentFile(zip, buf, size_buf);
+    if (byteCopied < 0)
+    {
+        BOOL encrypted = ((file_info.flag & 1) != 0);
+        // encrypted and -3 is our hint that the password is wrong
+        if (encrypted && byteCopied == -3)
+        {
+            if (error)
+            {
+                NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzReadCurrentFile", err];
+                NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)};
+                *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorWrongPassword userInfo:userInfo];
+            }
+        }
+        else
+        {
+            NSERROR_READ_CURRENT_FILE(error, byteCopied);
+        }
+    }
+    
+    free(buf);
+    
+    errclose = unzCloseCurrentFile(zip);
+    if (errclose != UNZ_OK)
+    {
+        NSERROR_CLOSE_CURRENT_FILE(error, errclose);
+    }
+    
+    // If we where able to read bytes without an error
+    return (byteCopied >= 0);
 }
 
 #pragma mark - Reading ZIP Archives
@@ -138,12 +257,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     int err = unzGoToFirstFile(zip);
     if (err != UNZ_OK)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGoToFirstFile", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_GO_TO_FIRST_FILE(error, err);
         return nil;
     }
     
@@ -225,12 +339,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     
     if (err != UNZ_END_OF_LIST_OF_FILE && err != UNZ_OK)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGoToNextFile", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_GO_TO_NEXT_FILE(error, err);
         return nil;
     }
     
@@ -242,7 +351,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     int ret = unzLocateFile(zip, [path UTF8String], NULL);
     if (ret == UNZ_END_OF_LIST_OF_FILE)
     {
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"file not found"};
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"file not found" };
         if (error)
         {
             *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorFileNotFound userInfo:userInfo];
@@ -259,12 +368,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     err = unzGetCurrentFileInfo64(zip, &file_info, NULL, 0, NULL, 0, NULL, 0);
     if (err != UNZ_OK)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGetCurrentFileInfo", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_GET_CURRENT_FILE_INFO(error, err);
         return nil;
     }
     
@@ -273,24 +377,14 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     buf = (void*)malloc(size_buf);
     if (buf == NULL)
     {
-        NSString *desc = @"Error allocating memory";
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_MALLOC(error, errno);
         return nil;
     }
     
     err = unzOpenCurrentFilePassword(zip, [self.password UTF8String]);
     if (err != UNZ_OK)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzOpenCurrentFilePassword", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err);
         return nil;
     }
     
@@ -311,12 +405,16 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     }
     while (byteCopied > 0);
 
-    
-
+    if (byteCopied < 0)
+    {
+        NSERROR_READ_CURRENT_FILE(error, byteCopied);
+    }
     
     errclose = unzCloseCurrentFile(zip);
     if (errclose != UNZ_OK)
-        NSLog(@"LOZIPFileWrapper: error %d with zipfile in unzCloseCurrentFile", errclose);
+    {
+        NSERROR_CLOSE_CURRENT_FILE(error, errclose);
+    }
     
     free(buf);
     
@@ -330,12 +428,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     int err = unzGoToFirstFile(zip);
     if (err != UNZ_OK)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGoToFirstFile", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_GO_TO_FIRST_FILE(error, err);
         return NO;
     }
     
@@ -348,7 +441,10 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     {
         BOOL rtn = [self internalWriteCurrentFileToURL:URL options:writeOptionsMask error:error];
         if (!rtn)
+        {
             return NO;
+        }
+        
         err = unzGoToNextFile(zip);
     }
     while (err == UNZ_OK);
@@ -360,12 +456,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     
     if (err != UNZ_END_OF_LIST_OF_FILE)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGoToNextFile", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_GO_TO_NEXT_FILE(error, err);
         return NO;
     }
     
@@ -395,12 +486,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     err = unzGetCurrentFileInfo64(zip, &file_info, filename_inzip, sizeof(filename_inzip), NULL, 0, NULL, 0);
     if (err != UNZ_OK)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGetCurrentFileInfo", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_GET_CURRENT_FILE_INFO(error, err);
         return NO;
     }
     
@@ -439,24 +525,14 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     buf = (void*)malloc(size_buf);
     if (buf == NULL)
     {
-        NSString *desc = @"Error allocating memory";
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_MALLOC(error, errno);
         return NO;
     }
     
     err = unzOpenCurrentFilePassword(zip, [self.password UTF8String]);
     if (err != UNZ_OK)
     {
-        NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzOpenCurrentFilePassword", err];
-        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-        if (error)
-        {
-            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];
-        }
+        NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err);
         return NO;
     }
     
@@ -502,18 +578,16 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
     if (!skip && (err == UNZ_OK))
     {
         fout = fopen([writeFilename UTF8String], "wb");
-        /* Some zips don't contain directory alone before file */
-        /*if ((fout == NULL) && (opt_extract_without_path == 0) &&
-            (filename_withoutpath != (char*)filename_inzip))
-        {
-            char c = *(filename_withoutpath-1);
-            *(filename_withoutpath-1) = 0;
-            makedir(write_filename);
-            *(filename_withoutpath-1) = c;
-            fout = FOPEN_FUNC(write_filename, "wb");
-        }*/
         if (fout == NULL)
+        {
             NSLog(@"LOZIPFileWrapper: error %d in opening %@", errno, writeFilename);
+            if (error)
+            {
+                NSString *desc = [NSString stringWithFormat:@"error %d in opening %@", errno, writeFilename];
+                NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
+                *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:userInfo];
+            }
+        }
     }
     
     /* Read from the zip, unzip to buffer, and write to disk */
@@ -552,9 +626,17 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
         }
     }
     
+    // Don't like reusing the err var for bytesRead count of unzReadCurrentFile.
+    if (err < 0)
+    {
+        NSERROR_READ_CURRENT_FILE(error, err);
+    }
+    
     errclose = unzCloseCurrentFile(zip);
     if (errclose != UNZ_OK)
-        NSLog(@"LOZIPFileWrapper: error %d with zipfile in unzCloseCurrentFile", errclose);
+    {
+        NSERROR_CLOSE_CURRENT_FILE(error, errclose);
+    }
     
     free(buf);
     
@@ -563,7 +645,7 @@ NSString *const LOZIPFileWrapperErrorDomain = @"LOZIPFileWrapperErrorDomain";
         [self.delegate zipFileWrapper:self didUnzipFileWithName:filenameInZip attributes:itemAttributes];
     }
     
-    return YES;
+    return (err == UNZ_OK);
 }
 
 
