@@ -33,6 +33,7 @@ typedef NS_ENUM (NSInteger, LOZIPFileWrapperError) {
 
 // Reading ZIP Archives
 
+- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithURL:(NSURL *)URL password:(NSString *)password error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithZIPData:(NSData *)data password:(NSString *)password error:(NSError **)error NS_DESIGNATED_INITIALIZER;
 
