@@ -588,7 +588,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     }
     
     /* Create the file on disk so we can unzip to it */
-    if (!skip && (err == UNZ_OK))
+    if (!skip && !isDirectory && (err == UNZ_OK))
     {
         fout = fopen([writeFilename UTF8String], "wb");
         if (fout == NULL)
