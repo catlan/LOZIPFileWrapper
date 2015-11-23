@@ -510,16 +510,28 @@ _out:
     if ((file_info.flag & 1) != 0)
         encrypted = YES;
     
-    
-    NSString *filenameInZip = [[NSString alloc] initWithBytes:filename_inzip
+    // NSZipFileArchive seems to impl the encoding like this.
+    // But not sure where NSZipFileArchive is used, BOM seems the go to impl.
+    NSString *filename = [[NSString alloc] initWithBytes:filename_inzip
                                                   length:file_info.size_filename
                                                 encoding:NSUTF8StringEncoding];
-    // Contains a path
-    if ([filenameInZip rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"/\\"]].location != NSNotFound)
+    if (!filename)
     {
-        filenameInZip = [filenameInZip stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+        filename = [[NSString alloc] initWithBytes:filename_inzip
+                                            length:file_info.size_filename
+                                          encoding:NSWindowsCP1252StringEncoding];
     }
-    NSString *writeFilename = [[URL path] stringByAppendingPathComponent:filenameInZip];
+    if (!filename)
+    {
+        filename = @"Untitled Document";
+    }
+    
+    // Contains a path
+    if ([filename rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"/\\"]].location != NSNotFound)
+    {
+        filename = [filename stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+    }
+    NSString *writeFilename = [[URL path] stringByAppendingPathComponent:filename];
     
     NSDictionary *fileAttributes = nil; // Used for the NSFileManager APIs
     NSDictionary *itemAttributes = nil; // Used in our delegates, includes compressed and uncompressed size.
@@ -553,7 +565,7 @@ _out:
     
     if (!skip && [self.delegate respondsToSelector:@selector(zipFileWrapper:shouldUnzipFileWithName:attributes:)])
     {
-        if (![self.delegate zipFileWrapper:self shouldUnzipFileWithName:filenameInZip attributes:itemAttributes])
+        if (![self.delegate zipFileWrapper:self shouldUnzipFileWithName:filename attributes:itemAttributes])
         {
             skip = YES;
         }
@@ -561,7 +573,7 @@ _out:
     
     if (!skip && [self.delegate respondsToSelector:@selector(zipFileWrapper:willUnzipFileWithName:attributes:)])
     {
-        [self.delegate zipFileWrapper:self willUnzipFileWithName:filenameInZip attributes:itemAttributes];
+        [self.delegate zipFileWrapper:self willUnzipFileWithName:filename attributes:itemAttributes];
     }
     
     if (!skip)
@@ -636,7 +648,7 @@ _out:
     
     if ((skip == 0) && [self.delegate respondsToSelector:@selector(zipFileWrapper:didUnzipFileWithName:attributes:)])
     {
-        [self.delegate zipFileWrapper:self didUnzipFileWithName:filenameInZip attributes:itemAttributes];
+        [self.delegate zipFileWrapper:self didUnzipFileWithName:filename attributes:itemAttributes];
     }
     
     return (err == UNZ_OK);
