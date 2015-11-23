@@ -306,9 +306,22 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
             string_method = "Unkn. ";
 #endif
         
+        // NSZipFileArchive seems to impl the encoding like this.
+        // But not sure where NSZipFileArchive is used, BOM seems the go to impl.
         NSString *filename = [[NSString alloc] initWithBytes:filename_inzip
                                                       length:file_info.size_filename
                                                     encoding:NSUTF8StringEncoding];
+        if (!filename)
+        {
+            filename = [[NSString alloc] initWithBytes:filename_inzip
+                                                length:file_info.size_filename
+                                              encoding:NSWindowsCP1252StringEncoding];
+        }
+        if (!filename)
+        {
+            filename = @"Untitled Document";
+        }
+        
         // Contains a path
         if ([filename rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"/\\"]].location != NSNotFound)
         {
