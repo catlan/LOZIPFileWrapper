@@ -14,6 +14,8 @@
 
 #include <sys/stat.h>
 
+#import <AssertMacros.h>
+
 
 #define NSERROR_GO_TO_FIRST_FILE(error, err) if (error) { \
         NSString *desc = [NSString stringWithFormat:@"error %d with zipfile in unzGoToFirstFile", err]; \
@@ -53,7 +55,11 @@
         NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc, LOZIPFileWrapperErrorDomain : @(err)}; \
         *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorInternal userInfo:userInfo];  \
     }
-
+#define NSERROR_CREATE_FILE(error, err, writeFilename) if (error) { \
+        NSString *desc = [NSString stringWithFormat:@"error %d in opening %@", err, writeFilename]; \
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc}; \
+        *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:userInfo]; \
+    }
 
 
 #define CHUNK 16384
@@ -395,11 +401,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     }
     
     err = unzOpenCurrentFilePassword(zip, [self.password UTF8String]);
-    if (err != UNZ_OK)
-    {
-        NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err);
-        return nil;
-    }
+    __Require_Action_Quiet(err == UNZ_OK, _out, NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err));
     
     /* Read from the zip, unzip to buffer, and write to data */
     int byteCopied = 0;
@@ -417,21 +419,19 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         [data appendBytes:buf length:byteCopied];
     }
     while (byteCopied > 0);
-
-    if (byteCopied < 0)
-    {
-        NSERROR_READ_CURRENT_FILE(error, byteCopied);
-    }
+    
+    __Require_Action_Quiet(byteCopied >= 0, _out, NSERROR_READ_CURRENT_FILE(error, byteCopied));
     
     errclose = unzCloseCurrentFile(zip);
-    if (errclose != UNZ_OK)
-    {
-        NSERROR_CLOSE_CURRENT_FILE(error, errclose);
-    }
+    __Require_Action_Quiet(errclose == UNZ_OK, _out, NSERROR_CLOSE_CURRENT_FILE(error, errclose));
     
     free(buf);
     
     return [NSData dataWithData:data];
+    
+_out:
+    free(buf);
+    return nil;
 }
 
 - (BOOL)internalWriteContentToURL:(NSURL *)URL
@@ -543,11 +543,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     }
     
     err = unzOpenCurrentFilePassword(zip, [self.password UTF8String]);
-    if (err != UNZ_OK)
-    {
-        NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err);
-        return NO;
-    }
+    __Require_Action_Quiet(err == UNZ_OK, _out, NSERROR_OPEN_CURRENT_FILE_PASSWORD(error, err));
     
     /* Determine if the file should be overwritten or not and ask the user if needed */
     if ([fileManager fileExistsAtPath:writeFilename] && !isDirectory && (writeOptionsMask & NSDataWritingWithoutOverwriting))
@@ -591,16 +587,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     if (!skip && !isDirectory && (err == UNZ_OK))
     {
         fout = fopen([writeFilename UTF8String], "wb");
-        if (fout == NULL)
-        {
-            NSLog(@"LOZIPFileWrapper: error %d in opening %@", errno, writeFilename);
-            if (error)
-            {
-                NSString *desc = [NSString stringWithFormat:@"error %d in opening %@", errno, writeFilename];
-                NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc};
-                *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:userInfo];
-            }
-        }
+        __Require_Action_Quiet(fout != NULL, _out, NSERROR_CREATE_FILE(error, errno, writeFilename));
     }
     
     /* Read from the zip, unzip to buffer, and write to disk */
@@ -640,16 +627,10 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     }
     
     // Don't like reusing the err var for bytesRead count of unzReadCurrentFile.
-    if (err < 0)
-    {
-        NSERROR_READ_CURRENT_FILE(error, err);
-    }
+    __Require_Action_Quiet(err == 0, _out, NSERROR_READ_CURRENT_FILE(error, err));
     
     errclose = unzCloseCurrentFile(zip);
-    if (errclose != UNZ_OK)
-    {
-        NSERROR_CLOSE_CURRENT_FILE(error, errclose);
-    }
+    __Require_Action_Quiet(errclose == UNZ_OK, _out, NSERROR_CLOSE_CURRENT_FILE(error, errclose));
     
     free(buf);
     
@@ -659,6 +640,10 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     }
     
     return (err == UNZ_OK);
+    
+_out:
+    free(buf);
+    return NO;
 }
 
 
