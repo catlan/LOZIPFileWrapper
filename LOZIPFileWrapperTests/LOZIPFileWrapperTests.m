@@ -121,6 +121,40 @@
     XCTAssert([contentsOfDirectory count] == 4 , @"Pass");
 }
 
+- (void)testOverwrite {
+    NSString *outputPath = [self _cachesPath:@"Overwrite"];
+    
+    NSURL *URL = [[NSBundle bundleForClass:[self class]] URLForResource:@"Overwrite1" withExtension:@"zip"];
+    NSData *data = [NSData dataWithContentsOfURL:URL];
+    
+    LOZIPFileWrapper *fileWrapper = [[LOZIPFileWrapper alloc] initWithZIPData:data password:nil error:NULL];
+    BOOL rtn = [fileWrapper writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:NULL];
+    XCTAssert(rtn == YES , @"Pass");
+    
+    NSString *content = [NSString stringWithContentsOfFile:[outputPath stringByAppendingPathComponent:@"HelloWorld.txt"] encoding:NSUTF8StringEncoding error:NULL];
+    XCTAssert([content isEqualToString:@"Hello World\n"] , @"Pass");
+    
+    
+    
+    URL = [[NSBundle bundleForClass:[self class]] URLForResource:@"Overwrite2" withExtension:@"zip"];
+    data = [NSData dataWithContentsOfURL:URL];
+    
+    fileWrapper = [[LOZIPFileWrapper alloc] initWithZIPData:data password:nil error:NULL];
+    rtn = [fileWrapper writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:NSDataWritingWithoutOverwriting error:NULL];
+    XCTAssert(rtn == YES , @"Pass");
+    
+    content = [NSString stringWithContentsOfFile:[outputPath stringByAppendingPathComponent:@"HelloWorld.txt"] encoding:NSUTF8StringEncoding error:NULL];
+    XCTAssert([content isEqualToString:@"Hello World\n"] , @"Pass");
+    
+    
+    
+    rtn = [fileWrapper writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:NULL];
+    XCTAssert(rtn == YES , @"Pass");
+    
+    content = [NSString stringWithContentsOfFile:[outputPath stringByAppendingPathComponent:@"HelloWorld.txt"] encoding:NSUTF8StringEncoding error:NULL];
+    XCTAssert([content isEqualToString:@"Overwritten World\n"] , @"Pass");
+}
+
 
 - (void)testPassword {
     NSString *zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"PasswordArchive" ofType:@"zip"];
