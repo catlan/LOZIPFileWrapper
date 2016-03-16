@@ -77,9 +77,9 @@
     XCTAssert([test1[LOZIPFileWrapperCompressedSize] isEqual:@(290)], @"Pass");
     XCTAssert([test1[NSFileSize] isEqual:@(783)], @"Pass");
     
-    //XCTAssert([test1[NSFileCreationDate] isEqual:[NSDate dateWithTimeIntervalSinceReferenceDate:461231580]], @"Pass");
-    //XCTAssert([test1[NSFileCreationDate] isEqual:[NSDate dateWithString:@"2015-08-14 07:53:00 +0000"]], @"Pass");
-    
+    NSDate *dateControlValue = [NSDate dateWithTimeIntervalSince1970:1439545980];
+    NSDate *dateValue = test1[NSFileCreationDate];
+    XCTAssertEqualWithAccuracy([dateControlValue timeIntervalSince1970], [dateValue timeIntervalSince1970], 0.001);
     
     NSDictionary *test2 = contentAttributes[@"_rels"];
     XCTAssert([test2[NSFileType] isEqual:NSFileTypeDirectory], @"Pass");

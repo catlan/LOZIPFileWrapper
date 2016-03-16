@@ -681,6 +681,7 @@ _out:
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *c = [[NSDateComponents alloc] init];
     
+    [c setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     [c setYear:tmu_date->tm_year];
     [c setMonth:tmu_date->tm_mon + 1];
     [c setDay:tmu_date->tm_mday];
