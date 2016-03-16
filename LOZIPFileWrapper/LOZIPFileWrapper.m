@@ -342,13 +342,6 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         
         if (contentsOfArchive)
         {
-            NSString *parentPath = [filename stringByDeletingLastPathComponent];
-            while (includeFolders && ![parentPath isEqualToString:@""] &&  ![contentsOfArchive valueForKey:parentPath])
-            {
-                // this makes a wrong file list order because /1/2/3 would show up before /1/2.
-                contentsOfArchive[parentPath] = @{ NSFileType : NSFileTypeDirectory };
-                parentPath = [parentPath stringByDeletingLastPathComponent];
-            }
             contentsOfArchive[filename] = itemAttributes;
         }
         
@@ -360,6 +353,22 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     {
         NSERROR_GO_TO_NEXT_FILE(error, err);
         return nil;
+    }
+    
+    if (includeFolders)
+    {
+        NSMutableDictionary *contentsOfArchiveIncludingFolders = [contentsOfArchive mutableCopy];
+        for (NSString *path in contentsOfArchive)
+        {
+            NSString *basepath = [path stringByDeletingLastPathComponent];
+            if ([basepath isEqual:@""])
+            {
+                continue;
+            }
+            
+            contentsOfArchiveIncludingFolders[basepath] = @{ NSFileType : NSFileTypeDirectory };
+        }
+        contentsOfArchive = contentsOfArchiveIncludingFolders;
     }
     
     return [NSDictionary dictionaryWithDictionary:contentsOfArchive];
