@@ -205,9 +205,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper */ = {
+		D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper" */;
+			buildConfigurationList = D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper Mac" */;
 			buildPhases = (
 				D1D11D231B7CCF3500EFFCA4 /* Sources */,
 				D1D11D241B7CCF3500EFFCA4 /* Frameworks */,
@@ -218,7 +218,7 @@
 			);
 			dependencies = (
 			);
-			name = LOZIPFileWrapper;
+			name = "LOZIPFileWrapper Mac";
 			productName = LOZIPFileWrapper;
 			productReference = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */;
 			productType = "com.apple.product-type.framework";
@@ -270,7 +270,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper */,
+				D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */,
 				D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests */,
 			);
 		};
@@ -325,7 +325,7 @@
 /* Begin PBXTargetDependency section */
 		D1D11D361B7CCF3600EFFCA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper */;
+			target = D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */;
 			targetProxy = D1D11D351B7CCF3600EFFCA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -428,7 +428,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.creativeinaustria.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -446,7 +446,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.creativeinaustria.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -497,7 +497,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper" */ = {
+		D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1D11D3F1B7CCF3600EFFCA4 /* Debug */,

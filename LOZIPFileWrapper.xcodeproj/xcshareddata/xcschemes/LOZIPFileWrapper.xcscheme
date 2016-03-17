@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D11D271B7CCF3500EFFCA4"
-               BuildableName = "LOZIPFileWrapper.framework"
-               BlueprintName = "LOZIPFileWrapper"
+               BuildableName = "LOZIPFileWrapper Mac.framework"
+               BlueprintName = "LOZIPFileWrapper Mac"
                ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,8 +57,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D11D271B7CCF3500EFFCA4"
-            BuildableName = "LOZIPFileWrapper.framework"
-            BlueprintName = "LOZIPFileWrapper"
+            BuildableName = "LOZIPFileWrapper Mac.framework"
+            BlueprintName = "LOZIPFileWrapper Mac"
             ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -79,8 +79,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D11D271B7CCF3500EFFCA4"
-            BuildableName = "LOZIPFileWrapper.framework"
-            BlueprintName = "LOZIPFileWrapper"
+            BuildableName = "LOZIPFileWrapper Mac.framework"
+            BlueprintName = "LOZIPFileWrapper Mac"
             ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -97,8 +97,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D11D271B7CCF3500EFFCA4"
-            BuildableName = "LOZIPFileWrapper.framework"
-            BlueprintName = "LOZIPFileWrapper"
+            BuildableName = "LOZIPFileWrapper Mac.framework"
+            BlueprintName = "LOZIPFileWrapper Mac"
             ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
