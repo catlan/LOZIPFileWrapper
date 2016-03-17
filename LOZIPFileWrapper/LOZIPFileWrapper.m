@@ -360,13 +360,23 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         NSMutableDictionary *contentsOfArchiveIncludingFolders = [contentsOfArchive mutableCopy];
         for (NSString *path in contentsOfArchive)
         {
-            NSString *basepath = [path stringByDeletingLastPathComponent];
-            if ([basepath isEqual:@""])
+            NSString *basePath = [path stringByDeletingLastPathComponent];
+            while (![basePath isEqual:@""])
             {
-                continue;
+                NSDictionary *base = contentsOfArchiveIncludingFolders[basePath];
+                if (base)
+                {
+                    // In case the zip archive added a empty file as directory
+                    if (![base[NSFileType] isEqual:NSFileTypeDirectory])
+                    {
+                        contentsOfArchiveIncludingFolders[basePath] = @{ NSFileType : NSFileTypeDirectory };
+                    }
+                }
+                contentsOfArchiveIncludingFolders[basePath] = @{ NSFileType : NSFileTypeDirectory };
+                
+                basePath = [basePath stringByDeletingLastPathComponent];
             }
             
-            contentsOfArchiveIncludingFolders[basepath] = @{ NSFileType : NSFileTypeDirectory };
         }
         contentsOfArchive = contentsOfArchiveIncludingFolders;
     }
