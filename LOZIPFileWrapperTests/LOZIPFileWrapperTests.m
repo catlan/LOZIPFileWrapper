@@ -11,6 +11,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 #import "LOZIPFileWrapper.h"
+#import "NSFileWrapper+LOZIPFileWrapper.h"
 
 @interface LOZIPFileWrapperTests : XCTestCase
 
@@ -160,7 +161,8 @@
     NSString *zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"PasswordArchive" ofType:@"zip"];
     NSString *outputPath = [self _cachesPath:@"Password"];
     
-    LOZIPFileWrapper *fileWrapper1 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:@"passw0rd" error:NULL];
+    NSError *openError = nil;
+    LOZIPFileWrapper *fileWrapper1 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:@"passw0rd" error:&openError];
     NSError *error1 = nil;
     BOOL rtn1 = [fileWrapper1 writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:&error1];
     XCTAssert(rtn1 == YES , @"Pass");
@@ -171,6 +173,21 @@
     LOZIPFileWrapper *fileWrapper2 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:@"Hello" error:&error2];
     XCTAssert(fileWrapper2 == nil , @"Password");
     XCTAssert(error2.code == LOZIPFileWrapperErrorWrongPassword, @"Password");
+}
+
+- (void)testCreateZIP {
+    
+    NSURL *URL = [[NSBundle bundleForClass:[self class]] URLForResource:@"HelloWorld" withExtension:@"txt"];
+    NSFileWrapper *fileWrapper = [[NSFileWrapper alloc] initWithURL:URL options:0 error:NULL];
+    
+    NSString *outputPath = [self _cachesPath:@"NewHelloWorld"];
+    NSURL *outputURL = [NSURL fileURLWithPath:outputPath];
+    outputURL = [outputURL URLByAppendingPathComponent:@"HelloWorld.zip"];
+    
+    NSError *error = nil;
+    BOOL success = [fileWrapper writeZIPArchiveToURL:outputURL password:nil options:0 error:&error];
+    
+    XCTAssert(success == YES, @"writeZIPArchiveToURL");
 }
 
 #pragma mark - Private
