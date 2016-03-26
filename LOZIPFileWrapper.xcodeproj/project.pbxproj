@@ -11,6 +11,9 @@
 		D121DD6F1B7F32F5003EA0AA /* HelloWorld.txt in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */; };
 		D15DE97F1C225C2200C64D1C /* Overwrite1.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97D1C225C2200C64D1C /* Overwrite1.zip */; };
 		D15DE9801C225C2200C64D1C /* Overwrite2.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97E1C225C2200C64D1C /* Overwrite2.zip */; };
+		D1BDEA951CA5C91B00B99751 /* libcompression.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BDEA941CA5C91B00B99751 /* libcompression.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D1BDEA981CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */; };
+		D1BDEA991CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */; };
 		D1D11D2E1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D11D341B7CCF3600EFFCA4 /* LOZIPFileWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */; };
 		D1D11D3B1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */; };
@@ -46,6 +49,9 @@
 		D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HelloWorld.txt; path = Resources/HelloWorld.txt; sourceTree = "<group>"; };
 		D15DE97D1C225C2200C64D1C /* Overwrite1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Overwrite1.zip; path = Resources/Overwrite1.zip; sourceTree = "<group>"; };
 		D15DE97E1C225C2200C64D1C /* Overwrite2.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Overwrite2.zip; path = Resources/Overwrite2.zip; sourceTree = "<group>"; };
+		D1BDEA941CA5C91B00B99751 /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
+		D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+LOZIPFileWrapper.h"; sourceTree = "<group>"; };
+		D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileWrapper+LOZIPFileWrapper.m"; sourceTree = "<group>"; };
 		D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LOZIPFileWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D2C1B7CCF3500EFFCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOZIPFileWrapper.h; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BDEA951CA5C91B00B99751 /* libcompression.tbd in Frameworks */,
 				D1D11D931B7CD4BB00EFFCA4 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +125,8 @@
 				D1D11D441B7CD0FB00EFFCA4 /* minizip */,
 				D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */,
 				D1D11D901B7CD2D900EFFCA4 /* LOZIPFileWrapper.m */,
+				D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */,
+				D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */,
 				D1D11D2B1B7CCF3500EFFCA4 /* Supporting Files */,
 			);
 			path = LOZIPFileWrapper;
@@ -179,6 +188,7 @@
 		D1D11DA61B7E37AC00EFFCA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1BDEA941CA5C91B00B99751 /* libcompression.tbd */,
 				D1D11D921B7CD4BB00EFFCA4 /* libz.dylib */,
 			);
 			name = Frameworks;
@@ -196,6 +206,7 @@
 				D1D11D811B7CD12600EFFCA4 /* crypt.h in Headers */,
 				D1D11D891B7CD12600EFFCA4 /* iowin32.h in Headers */,
 				D1D11D8D1B7CD12600EFFCA4 /* unzip.h in Headers */,
+				D1BDEA981CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h in Headers */,
 				D1D11D2E1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h in Headers */,
 				D1D11D871B7CD12600EFFCA4 /* ioapi.h in Headers */,
 				D1D11D8F1B7CD12600EFFCA4 /* zip.h in Headers */,
@@ -304,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1BDEA991CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m in Sources */,
 				D1D11D841B7CD12600EFFCA4 /* ioapi_mem.c in Sources */,
 				D1D11D861B7CD12600EFFCA4 /* ioapi.c in Sources */,
 				D1D11D8E1B7CD12600EFFCA4 /* zip.c in Sources */,
@@ -427,6 +439,7 @@
 				INFOPLIST_FILE = LOZIPFileWrapper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-DHAVE_APPLE_COMPRESSION=1";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.creativeinaustria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
@@ -445,6 +458,7 @@
 				INFOPLIST_FILE = LOZIPFileWrapper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-DHAVE_APPLE_COMPRESSION=1";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.creativeinaustria.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
