@@ -123,6 +123,7 @@
         if (err != ZIP_OK)
         {
             printf("error in opening %s in zipfile (%d)\n", savefilenameinzip, err);
+            free(buf);
             return NO;
         }
         
@@ -165,15 +166,13 @@
             if (err != ZIP_OK)
                 printf("error in closing %s in the zipfile (%d)\n", savefilenameinzip, err);
         }
-
         
+        free(buf);
     }
     
     errclose = zipClose(zip, NULL);
     if (errclose != ZIP_OK)
         printf("error in closing zip (%d)\n", errclose);
-    
-    free(buf);
     
     return (err == ZIP_OK);
 }
