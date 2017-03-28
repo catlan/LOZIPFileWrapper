@@ -11,6 +11,7 @@
 #include "zip.h"
 #include "unzip.h"
 #include "ioapi_mem.h"
+#include "minishared.h"
 
 #include <sys/stat.h>
 
@@ -335,14 +336,25 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         }
         
         
-        NSDictionary *itemAttributes = nil; // Used in our delegates, includes compressed and uncompressed size.
-        NSDate *fileDate = [[self class] dateFromTM_UNZ:&file_info.tmu_date];
-        itemAttributes = @{ NSFileCreationDate : fileDate, NSFileModificationDate : fileDate,  NSFileSize : @(file_info.uncompressed_size), LOZIPFileWrapperCompressedSize : @(file_info.compressed_size), LOZIPFileWrapperCompresseRation : @(ratio),  LOZIPFileWrapperEncrypted : @(encrypted) };
+        NSDate *fileDate = nil;
+        struct tm tmu_date = { 0 };
+        if (dosdate_to_tm(file_info.dos_date, &tmu_date) == 0)
+        {
+            fileDate = [[self class] dateFromTM:&tmu_date];
+        }
+        
+        NSMutableDictionary *itemAttributes = [NSMutableDictionary dictionary]; // Used in our delegates, includes compressed and uncompressed size.
+        itemAttributes[NSFileCreationDate] = fileDate;
+        itemAttributes[NSFileModificationDate] = fileDate;
+        itemAttributes[NSFileSize] = @(file_info.uncompressed_size);
+        itemAttributes[LOZIPFileWrapperCompressedSize] = @(file_info.compressed_size);
+        itemAttributes[LOZIPFileWrapperCompresseRation] = @(ratio);
+        itemAttributes[LOZIPFileWrapperEncrypted] = @(encrypted);
         
         
         if (contentsOfArchive)
         {
-            contentsOfArchive[filename] = itemAttributes;
+            contentsOfArchive[filename] = [itemAttributes copy];
         }
         
         err = unzGoToNextFile(zip);
@@ -552,11 +564,30 @@ _out:
     }
     NSString *writeFilename = [[URL path] stringByAppendingPathComponent:filename];
     
-    NSDictionary *fileAttributes = nil; // Used for the NSFileManager APIs
-    NSDictionary *itemAttributes = nil; // Used in our delegates, includes compressed and uncompressed size.
-    NSDate *fileDate = [[self class] dateFromTM_UNZ:&file_info.tmu_date];
-    fileAttributes = @{ NSFileCreationDate : fileDate, NSFileModificationDate : fileDate };
-    itemAttributes = @{ NSFileCreationDate : fileDate, NSFileModificationDate : fileDate,  NSFileSize : @(file_info.uncompressed_size), LOZIPFileWrapperCompressedSize : @(file_info.compressed_size), LOZIPFileWrapperCompresseRation : @(ratio),  LOZIPFileWrapperEncrypted : @(encrypted) };
+    
+    NSDate *fileDate = nil;
+    struct tm tmu_date = { 0 };
+    if (dosdate_to_tm(file_info.dos_date, &tmu_date))
+    {
+        fileDate = [[self class] dateFromTM:&tmu_date];
+    }
+    
+    // Used for the NSFileManager APIs
+    NSMutableDictionary *fileAttributes = [NSMutableDictionary dictionary];
+    fileAttributes[NSFileCreationDate] = fileDate;
+    fileAttributes[NSFileModificationDate] = fileDate;
+    
+    // Used in our delegates, includes compressed and uncompressed size.
+    NSDictionary *itemAttributes = ({
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[NSFileCreationDate] = fileDate;
+        dict[NSFileModificationDate] = fileDate;
+        dict[NSFileSize] = @(file_info.uncompressed_size);
+        dict[LOZIPFileWrapperCompressedSize] = @(file_info.compressed_size);
+        dict[LOZIPFileWrapperCompresseRation] = @(ratio);
+        dict[LOZIPFileWrapperEncrypted] = @(encrypted);
+        [dict copy];
+    });
 
     
     // Check if it contains directory
@@ -686,7 +717,7 @@ _out:
 
 #pragma mark - Helper
 
-+ (NSDate *)dateFromTM_UNZ:(tm_unz *)tmu_date
++ (NSDate *)dateFromTM:(struct tm *)tmu_date
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *c = [[NSDateComponents alloc] init];
