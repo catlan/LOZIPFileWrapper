@@ -13,6 +13,7 @@
 #include "zip.h"
 #include "unzip.h"
 #include "ioapi_mem.h"
+#include "minishared.h"
 
 #include <AssertMacros.h>
 #include <sys/stat.h>
@@ -97,12 +98,7 @@
         time( &tm_t );
         filedate = localtime(&tm_t);
         
-        zi.tmz_date.tm_sec  = filedate->tm_sec;
-        zi.tmz_date.tm_min  = filedate->tm_min;
-        zi.tmz_date.tm_hour = filedate->tm_hour;
-        zi.tmz_date.tm_mday = filedate->tm_mday;
-        zi.tmz_date.tm_mon  = filedate->tm_mon ;
-        zi.tmz_date.tm_year = filedate->tm_year;
+        zi.dos_date = tm_to_dosdate(filedate);
         
         
         buf = (void*)malloc(size_buf);
