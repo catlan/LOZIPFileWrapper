@@ -129,7 +129,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         
         unzmem->grow = 1;
         
-        unzmem->size = [data length];
+        unzmem->size = (uint32_t)[data length];
         unzmem->base = (char *)malloc(unzmem->size);
         memcpy(unzmem->base, [data bytes], unzmem->size);
         

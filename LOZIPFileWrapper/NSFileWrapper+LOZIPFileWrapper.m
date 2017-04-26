@@ -114,7 +114,7 @@
                                       (opt_compress_level != 0) ? Z_DEFLATED : 0,
                                       opt_compress_level,0,
                                       -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY,
-                                      [password UTF8String], crcFile, zip64);
+                                      [password UTF8String], (uint32_t)crcFile, zip64);
         
         if (err != ZIP_OK)
         {
