@@ -422,7 +422,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         return nil;
     }
     
-    NSMutableData *data = [NSMutableData dataWithCapacity:file_info.uncompressed_size];
+    NSMutableData *data = [NSMutableData dataWithCapacity:(NSUInteger)file_info.uncompressed_size];
     
     buf = (void*)malloc(size_buf);
     if (buf == NULL)
