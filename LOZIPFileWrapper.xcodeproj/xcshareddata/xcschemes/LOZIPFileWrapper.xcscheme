@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D11D321B7CCF3600EFFCA4"
-               BuildableName = "LOZIPFileWrapperTests.xctest"
-               BlueprintName = "LOZIPFileWrapperTests"
+               BuildableName = "LOZIPFileWrapperTests Mac.xctest"
+               BlueprintName = "LOZIPFileWrapperTests Mac"
                ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D11D321B7CCF3600EFFCA4"
-               BuildableName = "LOZIPFileWrapperTests.xctest"
-               BlueprintName = "LOZIPFileWrapperTests"
+               BuildableName = "LOZIPFileWrapperTests Mac.xctest"
+               BlueprintName = "LOZIPFileWrapperTests Mac"
                ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
             </BuildableReference>
          </TestableReference>

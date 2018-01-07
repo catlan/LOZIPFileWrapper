@@ -14,6 +14,14 @@
 		D1BDEA951CA5C91B00B99751 /* libcompression.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BDEA941CA5C91B00B99751 /* libcompression.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D1BDEA981CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */; };
 		D1BDEA991CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */; };
+		D1C9C7792002609300788663 /* LOZIPFileWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */; };
+		D1C9C77D2002609300788663 /* HelloWorld.txt in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */; };
+		D1C9C77E2002609300788663 /* Empty in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6C1B7F32F5003EA0AA /* Empty */; };
+		D1C9C77F2002609300788663 /* Overwrite2.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97E1C225C2200C64D1C /* Overwrite2.zip */; };
+		D1C9C7802002609300788663 /* HelloWorld.zip in Resources */ = {isa = PBXBuildFile; fileRef = D1D11DA71B7E3B9C00EFFCA4 /* HelloWorld.zip */; };
+		D1C9C7812002609300788663 /* PasswordArchive.zip in Resources */ = {isa = PBXBuildFile; fileRef = D1D11DAB1B7E416D00EFFCA4 /* PasswordArchive.zip */; };
+		D1C9C7822002609300788663 /* Overwrite1.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97D1C225C2200C64D1C /* Overwrite1.zip */; };
+		D1C9C792200261F700788663 /* LOZIPFileWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E5D8061F6BCAE9003615A2 /* LOZIPFileWrapper.framework */; };
 		D1D11D2E1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D11D341B7CCF3600EFFCA4 /* LOZIPFileWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */; };
 		D1D11D3B1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */; };
@@ -100,6 +108,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D1C9C790200261EC00788663 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1D11D1F1B7CCF3500EFFCA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1E5D7D51F6BCAE9003615A2;
+			remoteInfo = "LOZIPFileWrapper iOS";
+		};
 		D1D11D351B7CCF3600EFFCA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1D11D1F1B7CCF3500EFFCA4 /* Project object */;
@@ -117,10 +132,11 @@
 		D1BDEA941CA5C91B00B99751 /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
 		D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+LOZIPFileWrapper.h"; sourceTree = "<group>"; };
 		D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileWrapper+LOZIPFileWrapper.m"; sourceTree = "<group>"; };
+		D1C9C7862002609300788663 /* LOZIPFileWrapperTests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LOZIPFileWrapperTests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LOZIPFileWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D2C1B7CCF3500EFFCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOZIPFileWrapper.h; sourceTree = "<group>"; };
-		D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOZIPFileWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LOZIPFileWrapperTests Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D391B7CCF3600EFFCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LOZIPFileWrapperTests.m; sourceTree = "<group>"; };
 		D1D11D5C1B7CD12500EFFCA4 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = minizip/crypt.h; sourceTree = SOURCE_ROOT; };
@@ -170,6 +186,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D1C9C77A2002609300788663 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1C9C792200261F700788663 /* LOZIPFileWrapper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1D11D241B7CCF3500EFFCA4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,8 +237,9 @@
 			isa = PBXGroup;
 			children = (
 				D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */,
-				D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.xctest */,
+				D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac.xctest */,
 				D1E5D8061F6BCAE9003615A2 /* LOZIPFileWrapper.framework */,
+				D1C9C7862002609300788663 /* LOZIPFileWrapperTests iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -391,6 +416,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		D1C9C7752002609300788663 /* LOZIPFileWrapperTests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1C9C7832002609300788663 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests iOS" */;
+			buildPhases = (
+				D1C9C7782002609300788663 /* Sources */,
+				D1C9C77A2002609300788663 /* Frameworks */,
+				D1C9C77C2002609300788663 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1C9C791200261EC00788663 /* PBXTargetDependency */,
+			);
+			name = "LOZIPFileWrapperTests iOS";
+			productName = LOZIPFileWrapperTests;
+			productReference = D1C9C7862002609300788663 /* LOZIPFileWrapperTests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper Mac" */;
@@ -409,9 +452,9 @@
 			productReference = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests */ = {
+		D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests" */;
+			buildConfigurationList = D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests Mac" */;
 			buildPhases = (
 				D1D11D2F1B7CCF3600EFFCA4 /* Sources */,
 				D1D11D301B7CCF3600EFFCA4 /* Frameworks */,
@@ -422,9 +465,9 @@
 			dependencies = (
 				D1D11D361B7CCF3600EFFCA4 /* PBXTargetDependency */,
 			);
-			name = LOZIPFileWrapperTests;
+			name = "LOZIPFileWrapperTests Mac";
 			productName = LOZIPFileWrapperTests;
-			productReference = D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.xctest */;
+			productReference = D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D1E5D7D51F6BCAE9003615A2 /* LOZIPFileWrapper iOS */ = {
@@ -455,6 +498,9 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Christopher Atlan";
 				TargetAttributes = {
+					D1C9C7752002609300788663 = {
+						ProvisioningStyle = Manual;
+					};
 					D1D11D271B7CCF3500EFFCA4 = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -476,13 +522,27 @@
 			projectRoot = "";
 			targets = (
 				D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */,
-				D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests */,
+				D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac */,
 				D1E5D7D51F6BCAE9003615A2 /* LOZIPFileWrapper iOS */,
+				D1C9C7752002609300788663 /* LOZIPFileWrapperTests iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D1C9C77C2002609300788663 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1C9C77D2002609300788663 /* HelloWorld.txt in Resources */,
+				D1C9C77E2002609300788663 /* Empty in Resources */,
+				D1C9C77F2002609300788663 /* Overwrite2.zip in Resources */,
+				D1C9C7802002609300788663 /* HelloWorld.zip in Resources */,
+				D1C9C7812002609300788663 /* PasswordArchive.zip in Resources */,
+				D1C9C7822002609300788663 /* Overwrite1.zip in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1D11D261B7CCF3500EFFCA4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,6 +573,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D1C9C7782002609300788663 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1C9C7792002609300788663 /* LOZIPFileWrapperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D1D11D231B7CCF3500EFFCA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -572,6 +640,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D1C9C791200261EC00788663 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1E5D7D51F6BCAE9003615A2 /* LOZIPFileWrapper iOS */;
+			targetProxy = D1C9C790200261EC00788663 /* PBXContainerItemProxy */;
+		};
 		D1D11D361B7CCF3600EFFCA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */;
@@ -580,6 +653,50 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D1C9C7842002609300788663 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LOZIPFileWrapperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.creativeinaustria.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D1C9C7852002609300788663 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LOZIPFileWrapperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.creativeinaustria.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
 		D1D11D3C1B7CCF3600EFFCA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -800,6 +917,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D1C9C7832002609300788663 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1C9C7842002609300788663 /* Debug */,
+				D1C9C7852002609300788663 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D1D11D221B7CCF3500EFFCA4 /* Build configuration list for PBXProject "LOZIPFileWrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -818,7 +944,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests" */ = {
+		D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1D11D421B7CCF3600EFFCA4 /* Debug */,
