@@ -1,4 +1,4 @@
 language: objective-c
 xcode_project: LOZIPFileWrapper.xcodeproj # path to your xcodeproj folder
-xcode_scheme: LOZIPFileWrapper
+xcode_scheme: "LOZIPFileWrapper Mac"
 
