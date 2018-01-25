@@ -1,4 +1,5 @@
 language: objective-c
-xcode_project: LOZIPFileWrapper.xcodeproj # path to your xcodeproj folder
-xcode_scheme: "LOZIPFileWrapper Mac"
+osx_image: xcode9.2
+
+script: xcodebuild clean build test -project LOZIPFileWrapper.xcodeproj -scheme LOZIPFileWrapper CODE_SIGNING_REQUIRED=NO
 
