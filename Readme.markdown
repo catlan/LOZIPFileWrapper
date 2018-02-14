@@ -2,7 +2,7 @@
 
 # LOZIPFileWrapper
 
-LOZIPFileWrapper is a Cocoa wrapper around minizip. 
+LOZIPFileWrapper is a Cocoa wrapper around a modern [minizip](https://github.com/nmoinvaz/minizip) with support for extended attributes. 
 
 Features:
 
@@ -20,6 +20,10 @@ It requires only 10 files compared to the ~40 files of [ZipZap](https://github.c
 
 1. Add `LOZIPFileWrapper.h`, `LOZIPFileWrapper.m`, and `minizip` (required are `zip.c`, `zip.h`, `unzip.c`, `unzip.h`, `ioapi.c`, `ioapi.h`, `ioapi_mem.c`, `ioapi_mem.h`.) to your project.
 2. Add the `libz` library to your target
+
+## Extended Attributes
+ 
+ macOS Archive Utilitly and ditto stores extended attributes in ZIP archives as [AppleDouble](http://kaiser-edv.de/documents/AppleSingle_AppleDouble.pdf). Also known as `__MACOSX` folder with `._` files. LOZIPFileWrapper handles these correctly and sets them using `sys/xattr.h`.
  
 ## Write Support
  

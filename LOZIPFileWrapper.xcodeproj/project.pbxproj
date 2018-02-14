@@ -11,6 +11,12 @@
 		D121DD6F1B7F32F5003EA0AA /* HelloWorld.txt in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */; };
 		D15DE97F1C225C2200C64D1C /* Overwrite1.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97D1C225C2200C64D1C /* Overwrite1.zip */; };
 		D15DE9801C225C2200C64D1C /* Overwrite2.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97E1C225C2200C64D1C /* Overwrite2.zip */; };
+		D17969DF20330ECE004215EC /* TestfileRes.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DD20330ECE004215EC /* TestfileRes.zip */; };
+		D17969E020330ECE004215EC /* TestfileRes.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DD20330ECE004215EC /* TestfileRes.zip */; };
+		D17969E120330ECE004215EC /* macosx_metadata_test.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DE20330ECE004215EC /* macosx_metadata_test.zip */; };
+		D17969E220330ECE004215EC /* macosx_metadata_test.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DE20330ECE004215EC /* macosx_metadata_test.zip */; };
+		D17969E4203314DB004215EC /* Test.bundle.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969E3203314DB004215EC /* Test.bundle.zip */; };
+		D17969E5203314DB004215EC /* Test.bundle.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969E3203314DB004215EC /* Test.bundle.zip */; };
 		D1BDEA951CA5C91B00B99751 /* libcompression.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BDEA941CA5C91B00B99751 /* libcompression.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D1BDEA981CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */; };
 		D1BDEA991CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */; };
@@ -129,6 +135,9 @@
 		D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HelloWorld.txt; path = Resources/HelloWorld.txt; sourceTree = "<group>"; };
 		D15DE97D1C225C2200C64D1C /* Overwrite1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Overwrite1.zip; path = Resources/Overwrite1.zip; sourceTree = "<group>"; };
 		D15DE97E1C225C2200C64D1C /* Overwrite2.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Overwrite2.zip; path = Resources/Overwrite2.zip; sourceTree = "<group>"; };
+		D17969DD20330ECE004215EC /* TestfileRes.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = TestfileRes.zip; sourceTree = "<group>"; };
+		D17969DE20330ECE004215EC /* macosx_metadata_test.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = macosx_metadata_test.zip; sourceTree = "<group>"; };
+		D17969E3203314DB004215EC /* Test.bundle.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Test.bundle.zip; sourceTree = "<group>"; };
 		D1BDEA941CA5C91B00B99751 /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
 		D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+LOZIPFileWrapper.h"; sourceTree = "<group>"; };
 		D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileWrapper+LOZIPFileWrapper.m"; sourceTree = "<group>"; };
@@ -284,6 +293,9 @@
 				D1D11DAB1B7E416D00EFFCA4 /* PasswordArchive.zip */,
 				D15DE97D1C225C2200C64D1C /* Overwrite1.zip */,
 				D15DE97E1C225C2200C64D1C /* Overwrite2.zip */,
+				D17969DE20330ECE004215EC /* macosx_metadata_test.zip */,
+				D17969DD20330ECE004215EC /* TestfileRes.zip */,
+				D17969E3203314DB004215EC /* Test.bundle.zip */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -537,8 +549,11 @@
 				D1C9C77D2002609300788663 /* HelloWorld.txt in Resources */,
 				D1C9C77E2002609300788663 /* Empty in Resources */,
 				D1C9C77F2002609300788663 /* Overwrite2.zip in Resources */,
+				D17969E5203314DB004215EC /* Test.bundle.zip in Resources */,
+				D17969E220330ECE004215EC /* macosx_metadata_test.zip in Resources */,
 				D1C9C7802002609300788663 /* HelloWorld.zip in Resources */,
 				D1C9C7812002609300788663 /* PasswordArchive.zip in Resources */,
+				D17969E020330ECE004215EC /* TestfileRes.zip in Resources */,
 				D1C9C7822002609300788663 /* Overwrite1.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,8 +572,11 @@
 				D121DD6F1B7F32F5003EA0AA /* HelloWorld.txt in Resources */,
 				D121DD6E1B7F32F5003EA0AA /* Empty in Resources */,
 				D15DE9801C225C2200C64D1C /* Overwrite2.zip in Resources */,
+				D17969E4203314DB004215EC /* Test.bundle.zip in Resources */,
+				D17969E120330ECE004215EC /* macosx_metadata_test.zip in Resources */,
 				D1D11DA91B7E3B9C00EFFCA4 /* HelloWorld.zip in Resources */,
 				D1D11DAC1B7E416D00EFFCA4 /* PasswordArchive.zip in Resources */,
+				D17969DF20330ECE004215EC /* TestfileRes.zip in Resources */,
 				D15DE97F1C225C2200C64D1C /* Overwrite1.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,6 +902,7 @@
 		D1E5D8041F6BCAE9003615A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -907,6 +926,7 @@
 		D1E5D8051F6BCAE9003615A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;

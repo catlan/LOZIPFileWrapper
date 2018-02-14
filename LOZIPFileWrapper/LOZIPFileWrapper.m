@@ -14,6 +14,7 @@
 #include "minishared.h"
 
 #include <sys/stat.h>
+#include <sys/xattr.h>
 
 #import <AssertMacros.h>
 
@@ -79,6 +80,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     zipFile zip;
     ourmemory_t *unzmem;
     NSDictionary<NSString *, NSDictionary *> *_contentAttributes;
+    NSArray<NSString *> *_appleDoubleFiles;
 }
 
 // For reading
@@ -115,6 +117,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         }
         
         _contentAttributes = [self _contentAttributesOfZIPFileIncludingFolders:NO error:error];
+        _appleDoubleFiles = [self _filterAppleDouble];
     }
     return self;
 }
@@ -155,6 +158,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         }
         
         _contentAttributes = [self _contentAttributesOfZIPFileIncludingFolders:NO error:error];
+        _appleDoubleFiles = [self _filterAppleDouble];
     }
     return self;
 }
@@ -248,7 +252,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
 
 - (BOOL)writeContentOfZIPFileToURL:(NSURL *)URL options:(NSDataWritingOptions)writeOptionsMask error:(NSError **)error
 {
-    return [self internalWriteContentToURL:URL options:writeOptionsMask error:error];
+    return [self _writeContentToURL:URL options:writeOptionsMask error:error];
 }
 
 - (NSArray *)contentOfZIPFileIncludingFolders:(BOOL)includeFolders error:(NSError **)error
@@ -265,6 +269,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
 - (NSDictionary *)contentAttributesOfZIPFileIncludingFolders:(BOOL)includeFolders error:(NSError **)error
 {
     NSMutableDictionary *contentsOfArchive = [_contentAttributes mutableCopy];
+    [contentsOfArchive removeObjectsForKeys:_appleDoubleFiles];
     if (includeFolders)
     {
         NSMutableDictionary *contentsOfArchiveIncludingFolders = [contentsOfArchive mutableCopy];
@@ -475,10 +480,28 @@ _out:
     return nil;
 }
 
-- (BOOL)internalWriteContentToURL:(NSURL *)URL
-                          options:(NSDataWritingOptions)writeOptionsMask
-                            error:(NSError **)error
+- (BOOL)_writeContentToURL:(NSURL *)URL
+                   options:(NSDataWritingOptions)writeOptionsMask
+                     error:(NSError **)error
 {
+    NSMutableDictionary<NSString *, NSData *> *appleDoubleDataMapping = [NSMutableDictionary dictionaryWithCapacity:[_appleDoubleFiles count]];
+    for (NSString *appleDoublePath in _appleDoubleFiles)
+    {
+        NSDictionary<NSFileAttributeKey, id> *attributes = [_contentAttributes objectForKey:appleDoublePath];
+        if ([attributes fileSize] > 0)
+        {
+            NSData *data = [self contentsAtPath:appleDoublePath error:NULL];
+            if (data)
+            {
+                NSString *path = [[self class] pathFromAppleDoublePath:appleDoublePath];
+                if (path)
+                {
+                    [appleDoubleDataMapping setObject:data forKey:path];
+                }
+            }
+        }
+    }
+    
     int err = unzGoToFirstFile(zip);
     if (err != UNZ_OK)
     {
@@ -493,7 +516,7 @@ _out:
     
     do
     {
-        BOOL rtn = [self internalWriteCurrentFileToURL:URL options:writeOptionsMask error:error];
+        BOOL rtn = [self _writeCurrentFileToURL:URL appleDoubles:appleDoubleDataMapping options:writeOptionsMask error:error];
         if (!rtn)
         {
             return NO;
@@ -519,9 +542,10 @@ _out:
 
 
 
-- (BOOL)internalWriteCurrentFileToURL:(NSURL *)URL
-                              options:(NSDataWritingOptions)writeOptionsMask
-                                error:(NSError **)error
+- (BOOL)_writeCurrentFileToURL:(NSURL *)URL
+                  appleDoubles:(NSDictionary<NSString *, NSData *> *)appleDoubleDataMapping
+                       options:(NSDataWritingOptions)writeOptionsMask
+                         error:(NSError **)error
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -572,8 +596,21 @@ _out:
     {
         filename = [filename stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
     }
-    NSString *writeFilename = [[URL path] stringByAppendingPathComponent:filename];
     
+    if ([_appleDoubleFiles containsObject:filename])
+    {
+        return YES;
+    }
+    
+    NSData *appleDoubleData = [appleDoubleDataMapping objectForKey:filename];
+    if (!appleDoubleData && [filename hasSuffix:@"/"])
+    {
+        NSInteger index = [filename length] - 1;
+        NSString *dirname = [filename substringToIndex:index];
+        appleDoubleData = [appleDoubleDataMapping objectForKey:dirname];
+    }
+    
+    NSString *writeFilename = [[URL path] stringByAppendingPathComponent:filename];
     
     NSDate *fileDate = nil;
     struct tm tmu_date = { 0 };
@@ -645,11 +682,22 @@ _out:
         }
         
         NSError *createDirectoryError = nil;
-        BOOL rtn = [fileManager createDirectoryAtPath:directoryPath
-                          withIntermediateDirectories:YES
-                                           attributes:fileAttributes
-                                                error:&createDirectoryError];
-        if (!rtn)
+        if ([fileManager createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:fileAttributes error:&createDirectoryError])
+        {
+            if (isDirectory && appleDoubleData)
+            {
+                NSDictionary *extendedAttributes = [[self class] extendedAttributesFormAppleDoubleData:appleDoubleData];
+                for (NSString *extendedAttributeKey in extendedAttributes)
+                {
+                    NSData *extendedAttributeData = [extendedAttributes objectForKey:extendedAttributeKey];
+                    if (setxattr([writeFilename UTF8String], [extendedAttributeKey UTF8String], [extendedAttributeData bytes], [extendedAttributeData length], 0, 0) == -1)
+                    {
+                        NSLog(@"LOZIPFileWrapper: error %d in set '%@' attribute failed: %@", errno, extendedAttributeKey, writeFilename);
+                    }
+                }
+            }
+        }
+        else
         {
             NSLog(@"LOZIPFileWrapper: error createDirectoryAtPath %@", createDirectoryError);
         }
@@ -686,6 +734,19 @@ _out:
         
         if (fout)
             fclose(fout);
+        
+        if (appleDoubleData)
+        {
+            NSDictionary *extendedAttributes = [[self class] extendedAttributesFormAppleDoubleData:appleDoubleData];
+            for (NSString *extendedAttributeKey in extendedAttributes)
+            {
+                NSData *extendedAttributeData = [extendedAttributes objectForKey:extendedAttributeKey];
+                if (setxattr([writeFilename UTF8String], [extendedAttributeKey UTF8String], [extendedAttributeData bytes], [extendedAttributeData length], 0, 0) == -1)
+                {
+                    NSLog(@"LOZIPFileWrapper: error %d in set '%@' attribute failed: %@", errno, extendedAttributeKey, writeFilename);
+                }
+            }
+        }
         
         /* Set the time of the file that has been unzipped */
         if (err == 0)
@@ -741,6 +802,124 @@ _out:
     [c setSecond:tmu_date->tm_sec];
     
     return [gregorian dateFromComponents:c];
+}
+
+#pragma mark - Apple Double
+
+- (NSArray<NSString *> *)_filterAppleDouble
+{
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSString *path in _contentAttributes)
+    {
+        if ([[self class] isAppleDoublePath:path])
+        {
+            [result addObject:path];
+        }
+    }
+    return [result copy];
+}
+
++ (BOOL)isAppleDoublePath:(NSString *)path
+{
+    return [path hasPrefix:@"__MACOSX"];
+}
+
++ (NSString *)pathFromAppleDoublePath:(NSString *)appleDoublePath
+{
+    NSString *dirname = [appleDoublePath stringByDeletingLastPathComponent];
+    if ([dirname hasPrefix:@"__MACOSX"])
+    {
+        dirname = [appleDoublePath substringFromIndex:9];
+    }
+    NSString *filename = [appleDoublePath lastPathComponent];
+    if ([filename hasPrefix:@"._"])
+    {
+        filename = [filename substringFromIndex:2];
+    }
+    return [dirname stringByAppendingPathComponent:filename];
+}
+
+//
+// Table 2-1 AppleSingle file header
+// Field                               Length
+// Magic number                        4 bytes
+// Version number                      4 bytes
+// Filler                              16 bytes
+// Number of entries                   2 bytes
+// Entry descriptor for each entry:
+//     Entry ID                        4 bytes
+//     Offset                          4 bytes
+//     Length                          4 bytes
+//
+
+#define LONG_AT_OFFSET(data, offset) *((uint32_t *)((unsigned char *)&data[offset]))
+#define WORD_AT_OFFSET(data, offset) *((uint16_t *)((unsigned char *)&data[offset]))
+
+#define APPLEDOUBLE_MAGIC_NUMBER 0x00051607
+#define APPLEDOUBLE_VERSION_NUMBER 0x00020000
+
+#define APPLEDOUBLE_RESOURCEFORK_ENTRYID 2
+#define APPLEDOUBLE_FINDERINFO_ENTRYID 9
+
++ (NSDictionary *)extendedAttributesFormAppleDoubleData:(NSData *)data
+{
+    NSUInteger lenght = [data length];
+    unsigned char *bytes = (unsigned char *)[data bytes];
+    if (lenght < 26)
+        return nil;
+    
+    int offset = 0;
+    uint32_t magicNumber = CFSwapInt32BigToHost( LONG_AT_OFFSET(bytes, offset) ); offset += 4;
+    uint32_t versionNumber = CFSwapInt32BigToHost( LONG_AT_OFFSET(bytes, offset) ); offset += 4;
+    if (magicNumber == APPLEDOUBLE_MAGIC_NUMBER
+        && versionNumber == APPLEDOUBLE_VERSION_NUMBER)
+    {
+        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+        
+        // filler
+        offset += 16;
+        
+        uint16_t numberOfEntries = CFSwapInt16BigToHost( WORD_AT_OFFSET(bytes, offset) );  offset += 2;
+        for (int index = 0; index < numberOfEntries; index++)
+        {
+            if (offset + 12 > lenght)
+                break;
+            
+            uint32_t entryID = CFSwapInt32BigToHost( LONG_AT_OFFSET(bytes, offset) ); offset += 4;
+            uint32_t entryOffset = CFSwapInt32BigToHost( LONG_AT_OFFSET(bytes, offset) ); offset += 4;
+            uint32_t entryLength = CFSwapInt32BigToHost( LONG_AT_OFFSET(bytes, offset) ); offset += 4;
+            
+            NSString *entryName = nil;
+            if (entryID == APPLEDOUBLE_RESOURCEFORK_ENTRYID)
+            {
+                entryName = @XATTR_RESOURCEFORK_NAME;
+            }
+            else if (entryID == APPLEDOUBLE_FINDERINFO_ENTRYID)
+            {
+                entryName = @XATTR_FINDERINFO_NAME;
+                // From man SETXATTR(2):
+                // Due to historical reasons, the XATTR_FINDERINFO_NAME (defined to be
+                // ``com.apple.FinderInfo'') extended attribute must be 32 bytes;
+                //
+                // Note (catlan): extra attributes (i.e. ``com.apple.lastuseddate#PS'')
+                // are stored after the first 32 bytes.
+                if (entryLength > 32)
+                    entryLength = 32;
+            }
+            if (entryName)
+            {
+                NSRange entryRange = NSMakeRange(entryOffset, entryLength);
+                if (lenght >= NSMaxRange(entryRange))
+                {
+                    NSData *entry = [data subdataWithRange:entryRange];
+                    [attributes setObject:entry forKey:entryName];
+                }
+            }
+        }
+        return [attributes copy];
+    }
+    
+    return nil;
 }
 
 @end

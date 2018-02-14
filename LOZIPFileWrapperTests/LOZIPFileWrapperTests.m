@@ -175,6 +175,73 @@
     XCTAssert(error2.code == LOZIPFileWrapperErrorWrongPassword, @"Password");
 }
 
+
+- (void)testResourceForkIgnore__MACOSX
+{
+    // macosx_metadata_test.zip
+    NSString *zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"macosx_metadata_test" ofType:@"zip"];
+    NSString *outputPath = [self _cachesPath:@"macosx_metadata_test"];
+    
+    NSError *openError = nil;
+    LOZIPFileWrapper *fileWrapper1 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:nil error:&openError];
+    
+    NSDictionary *contentAttributes1 = [fileWrapper1 contentAttributesOfZIPFileIncludingFolders:NO error:NULL];
+    XCTAssert([contentAttributes1 count] == 4, @"Pass");
+    
+    NSArray *contentOfZIPFile1 = [fileWrapper1 contentOfZIPFileIncludingFolders:NO error:NULL];
+    XCTAssert([contentOfZIPFile1 count] == 4, @"Pass");
+    XCTAssert([contentOfZIPFile1 containsObject:@"macosx_metadata_test/"], @"Pass");
+    XCTAssert([contentOfZIPFile1 containsObject:@"macosx_metadata_test/readme.txt"], @"Pass");
+    XCTAssert([contentOfZIPFile1 containsObject:@"macosx_metadata_test/catty_with_resource.jpg"], @"Pass");
+    XCTAssert([contentOfZIPFile1 containsObject:@"macosx_metadata_test/catty_with_no_resource.jpg"], @"Pass");
+    
+    
+    NSError *error1 = nil;
+    BOOL rtn1 = [fileWrapper1 writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:&error1];
+    XCTAssert(rtn1 == YES , @"Pass");
+    
+    NSArray *contentsOfDirectory1 = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:outputPath error:NULL];
+    XCTAssert([contentsOfDirectory1 count] == 1, @"Pass");
+    
+    NSArray *contentsOfDirectory2 = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[outputPath stringByAppendingPathComponent:@"macosx_metadata_test"] error:NULL];
+    XCTAssert([contentsOfDirectory2 count] == 3, @"Pass");
+    
+    
+    // TestfileRes.zip
+    zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"TestfileRes" ofType:@"zip"];
+    outputPath = [self _cachesPath:@"TestfileRes"];
+    
+    LOZIPFileWrapper *fileWrapper2 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:nil error:&openError];
+    
+    NSDictionary *contentAttributes2 = [fileWrapper2 contentAttributesOfZIPFileIncludingFolders:NO error:NULL];
+    XCTAssert([contentAttributes2 count] == 2, @"Pass");
+    
+    NSArray *contentOfZIPFile2 = [fileWrapper2 contentOfZIPFileIncludingFolders:NO error:NULL];
+    XCTAssert([contentOfZIPFile2 count] == 2, @"Pass");
+    XCTAssert([contentOfZIPFile2 containsObject:@"TestFileData.rsrc"], @"Pass");
+    XCTAssert([contentOfZIPFile2 containsObject:@"TestfileRes.rsrc"], @"Pass");
+    // TestfileRes.rsrc is empty, only the resource fork includes data.
+    
+    
+    // Test.bundle.zip
+    zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Test.bundle" ofType:@"zip"];
+    outputPath = [self _cachesPath:@"Test-bundle"];
+    
+    LOZIPFileWrapper *fileWrapper3 = [[LOZIPFileWrapper alloc] initWithURL:[NSURL fileURLWithPath:zipPath] password:nil error:&openError];
+    
+    NSDictionary *contentAttributes3 = [fileWrapper3 contentAttributesOfZIPFileIncludingFolders:NO error:NULL];
+    XCTAssert([contentAttributes3 count] == 3, @"Pass");
+    
+    NSArray *contentOfZIPFile3 = [fileWrapper3 contentOfZIPFileIncludingFolders:NO error:NULL];
+    XCTAssert([contentOfZIPFile3 count] == 3, @"Pass");
+    XCTAssert([contentOfZIPFile3 containsObject:@"Test.bundle/"], @"Pass");
+    XCTAssert([contentOfZIPFile3 containsObject:@"Test.bundle/Hello World.txt"], @"Pass");
+    XCTAssert([contentOfZIPFile3 containsObject:@"Test.bundle/Icon\r"], @"Pass");
+    
+    BOOL rtn3 = [fileWrapper3 writeContentOfZIPFileToURL:[NSURL fileURLWithPath:outputPath] options:0 error:NULL];
+    XCTAssert(rtn3, @"Pass");
+}
+
 - (void)testCreateZIP {
     
     NSURL *URL = [[NSBundle bundleForClass:[self class]] URLForResource:@"HelloWorld" withExtension:@"txt"];
