@@ -78,6 +78,7 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
 @interface LOZIPFileWrapper () {
     zipFile zip;
     ourmemory_t *unzmem;
+    NSDictionary<NSString *, NSDictionary *> *_contentAttributes;
 }
 
 // For reading
@@ -112,6 +113,8 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         {
             return nil;
         }
+        
+        _contentAttributes = [self _contentAttributesOfZIPFileIncludingFolders:NO error:error];
     }
     return self;
 }
@@ -150,6 +153,8 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
         {
             return nil;
         }
+        
+        _contentAttributes = [self _contentAttributesOfZIPFileIncludingFolders:NO error:error];
     }
     return self;
 }
@@ -259,6 +264,37 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
 
 - (NSDictionary *)contentAttributesOfZIPFileIncludingFolders:(BOOL)includeFolders error:(NSError **)error
 {
+    NSMutableDictionary *contentsOfArchive = [_contentAttributes mutableCopy];
+    if (includeFolders)
+    {
+        NSMutableDictionary *contentsOfArchiveIncludingFolders = [contentsOfArchive mutableCopy];
+        for (NSString *path in contentsOfArchive)
+        {
+            NSString *basePath = [path stringByDeletingLastPathComponent];
+            while (![basePath isEqual:@""])
+            {
+                NSDictionary *base = contentsOfArchiveIncludingFolders[basePath];
+                if (base)
+                {
+                    // In case the zip archive added a empty file as directory
+                    if (![base[NSFileType] isEqual:NSFileTypeDirectory])
+                    {
+                        contentsOfArchiveIncludingFolders[basePath] = @{ NSFileType : NSFileTypeDirectory };
+                    }
+                }
+                contentsOfArchiveIncludingFolders[basePath] = @{ NSFileType : NSFileTypeDirectory };
+                
+                basePath = [basePath stringByDeletingLastPathComponent];
+            }
+            
+        }
+        contentsOfArchive = contentsOfArchiveIncludingFolders;
+    }
+    return contentsOfArchive;
+}
+
+- (NSDictionary *)_contentAttributesOfZIPFileIncludingFolders:(BOOL)includeFolders error:(NSError **)error
+{
     NSMutableDictionary *contentsOfArchive = [NSMutableDictionary dictionary];
     
     int err = unzGoToFirstFile(zip);
@@ -365,32 +401,6 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
     {
         NSERROR_GO_TO_NEXT_FILE(error, err);
         return nil;
-    }
-    
-    if (includeFolders)
-    {
-        NSMutableDictionary *contentsOfArchiveIncludingFolders = [contentsOfArchive mutableCopy];
-        for (NSString *path in contentsOfArchive)
-        {
-            NSString *basePath = [path stringByDeletingLastPathComponent];
-            while (![basePath isEqual:@""])
-            {
-                NSDictionary *base = contentsOfArchiveIncludingFolders[basePath];
-                if (base)
-                {
-                    // In case the zip archive added a empty file as directory
-                    if (![base[NSFileType] isEqual:NSFileTypeDirectory])
-                    {
-                        contentsOfArchiveIncludingFolders[basePath] = @{ NSFileType : NSFileTypeDirectory };
-                    }
-                }
-                contentsOfArchiveIncludingFolders[basePath] = @{ NSFileType : NSFileTypeDirectory };
-                
-                basePath = [basePath stringByDeletingLastPathComponent];
-            }
-            
-        }
-        contentsOfArchive = contentsOfArchiveIncludingFolders;
     }
     
     return [NSDictionary dictionaryWithDictionary:contentsOfArchive];
