@@ -523,10 +523,9 @@
 			};
 			buildConfigurationList = D1D11D221B7CCF3500EFFCA4 /* Build configuration list for PBXProject "LOZIPFileWrapper" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
