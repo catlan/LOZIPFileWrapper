@@ -275,7 +275,10 @@
 
 - (NSString *)_calculateMD5Digest:(NSData *)data {
     unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD5(data.bytes, (unsigned int)data.length, digest);
+#pragma clang diagnostic pop
     NSMutableString *string = [NSMutableString string];
     
     for (i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
