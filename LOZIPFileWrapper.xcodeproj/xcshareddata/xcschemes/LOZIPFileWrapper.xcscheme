@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D11D271B7CCF3500EFFCA4"
                BuildableName = "LOZIPFileWrapper.framework"
-               BlueprintName = "LOZIPFileWrapper Mac"
+               BlueprintName = "LOZIPFileWrapper"
                ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,7 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D11D321B7CCF3600EFFCA4"
                BuildableName = "LOZIPFileWrapperTests Mac.xctest"
-               BlueprintName = "LOZIPFileWrapperTests Mac"
+               BlueprintName = "LOZIPFileWrapperTests"
                ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,7 +48,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D1D11D321B7CCF3600EFFCA4"
                BuildableName = "LOZIPFileWrapperTests Mac.xctest"
-               BlueprintName = "LOZIPFileWrapperTests Mac"
+               BlueprintName = "LOZIPFileWrapperTests"
                ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -69,7 +69,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D11D271B7CCF3500EFFCA4"
             BuildableName = "LOZIPFileWrapper.framework"
-            BlueprintName = "LOZIPFileWrapper Mac"
+            BlueprintName = "LOZIPFileWrapper"
             ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -85,7 +85,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D1D11D271B7CCF3500EFFCA4"
             BuildableName = "LOZIPFileWrapper.framework"
-            BlueprintName = "LOZIPFileWrapper Mac"
+            BlueprintName = "LOZIPFileWrapper"
             ReferencedContainer = "container:LOZIPFileWrapper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -12,22 +12,11 @@
 		D15DE97F1C225C2200C64D1C /* Overwrite1.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97D1C225C2200C64D1C /* Overwrite1.zip */; };
 		D15DE9801C225C2200C64D1C /* Overwrite2.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97E1C225C2200C64D1C /* Overwrite2.zip */; };
 		D17969DF20330ECE004215EC /* TestfileRes.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DD20330ECE004215EC /* TestfileRes.zip */; };
-		D17969E020330ECE004215EC /* TestfileRes.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DD20330ECE004215EC /* TestfileRes.zip */; };
 		D17969E120330ECE004215EC /* macosx_metadata_test.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DE20330ECE004215EC /* macosx_metadata_test.zip */; };
-		D17969E220330ECE004215EC /* macosx_metadata_test.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969DE20330ECE004215EC /* macosx_metadata_test.zip */; };
 		D17969E4203314DB004215EC /* Test.bundle.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969E3203314DB004215EC /* Test.bundle.zip */; };
-		D17969E5203314DB004215EC /* Test.bundle.zip in Resources */ = {isa = PBXBuildFile; fileRef = D17969E3203314DB004215EC /* Test.bundle.zip */; };
 		D1BDEA951CA5C91B00B99751 /* libcompression.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BDEA941CA5C91B00B99751 /* libcompression.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D1BDEA981CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */; };
 		D1BDEA991CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */; };
-		D1C9C7792002609300788663 /* LOZIPFileWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */; };
-		D1C9C77D2002609300788663 /* HelloWorld.txt in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6D1B7F32F5003EA0AA /* HelloWorld.txt */; };
-		D1C9C77E2002609300788663 /* Empty in Resources */ = {isa = PBXBuildFile; fileRef = D121DD6C1B7F32F5003EA0AA /* Empty */; };
-		D1C9C77F2002609300788663 /* Overwrite2.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97E1C225C2200C64D1C /* Overwrite2.zip */; };
-		D1C9C7802002609300788663 /* HelloWorld.zip in Resources */ = {isa = PBXBuildFile; fileRef = D1D11DA71B7E3B9C00EFFCA4 /* HelloWorld.zip */; };
-		D1C9C7812002609300788663 /* PasswordArchive.zip in Resources */ = {isa = PBXBuildFile; fileRef = D1D11DAB1B7E416D00EFFCA4 /* PasswordArchive.zip */; };
-		D1C9C7822002609300788663 /* Overwrite1.zip in Resources */ = {isa = PBXBuildFile; fileRef = D15DE97D1C225C2200C64D1C /* Overwrite1.zip */; };
-		D1C9C792200261F700788663 /* LOZIPFileWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E5D8061F6BCAE9003615A2 /* LOZIPFileWrapper.framework */; };
 		D1D11D2E1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D11D341B7CCF3600EFFCA4 /* LOZIPFileWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */; };
 		D1D11D3B1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */; };
@@ -70,57 +59,9 @@
 		D1DB02F11E8A5396007BFDAB /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02DB1E8A5396007BFDAB /* pwd2key.h */; };
 		D1DB02F21E8A5396007BFDAB /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02DC1E8A5396007BFDAB /* sha1.c */; };
 		D1DB02F31E8A5396007BFDAB /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02DD1E8A5396007BFDAB /* sha1.h */; };
-		D1E5D7D71F6BCAE9003615A2 /* NSFileWrapper+LOZIPFileWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */; };
-		D1E5D7D81F6BCAE9003615A2 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02CF1E8A5396007BFDAB /* aestab.c */; };
-		D1E5D7D91F6BCAE9003615A2 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02DA1E8A5396007BFDAB /* pwd2key.c */; };
-		D1E5D7DA1F6BCAE9003615A2 /* minishared.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02C11E8A4A3D007BFDAB /* minishared.c */; };
-		D1E5D7DB1F6BCAE9003615A2 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02CD1E8A5396007BFDAB /* aeskey.c */; };
-		D1E5D7DC1F6BCAE9003615A2 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02C51E8A4BA5007BFDAB /* crypt.c */; };
-		D1E5D7DD1F6BCAE9003615A2 /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D5F1B7CD12500EFFCA4 /* ioapi_mem.c */; settings = {COMPILER_FLAGS = "-w"; }; };
-		D1E5D7DE1F6BCAE9003615A2 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02D31E8A5396007BFDAB /* fileenc.c */; };
-		D1E5D7DF1F6BCAE9003615A2 /* aes_ni.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02C91E8A5396007BFDAB /* aes_ni.c */; };
-		D1E5D7E01F6BCAE9003615A2 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02D51E8A5396007BFDAB /* hmac.c */; };
-		D1E5D7E11F6BCAE9003615A2 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D611B7CD12600EFFCA4 /* ioapi.c */; settings = {COMPILER_FLAGS = "-w"; }; };
-		D1E5D7E21F6BCAE9003615A2 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02DC1E8A5396007BFDAB /* sha1.c */; };
-		D1E5D7E31F6BCAE9003615A2 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D691B7CD12600EFFCA4 /* zip.c */; settings = {COMPILER_FLAGS = "-w"; }; };
-		D1E5D7E41F6BCAE9003615A2 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D671B7CD12600EFFCA4 /* unzip.c */; settings = {COMPILER_FLAGS = "-w"; }; };
-		D1E5D7E51F6BCAE9003615A2 /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02CC1E8A5396007BFDAB /* aescrypt.c */; };
-		D1E5D7E61F6BCAE9003615A2 /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = D1DB02D81E8A5396007BFDAB /* prng.c */; };
-		D1E5D7E71F6BCAE9003615A2 /* LOZIPFileWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D11D901B7CD2D900EFFCA4 /* LOZIPFileWrapper.m */; };
-		D1E5D7E91F6BCAE9003615A2 /* libcompression.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BDEA941CA5C91B00B99751 /* libcompression.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D1E5D7EA1F6BCAE9003615A2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1D11D921B7CD4BB00EFFCA4 /* libz.dylib */; };
-		D1E5D7EC1F6BCAE9003615A2 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02C81E8A5396007BFDAB /* aes.h */; };
-		D1E5D7ED1F6BCAE9003615A2 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02DD1E8A5396007BFDAB /* sha1.h */; };
-		D1E5D7EE1F6BCAE9003615A2 /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02DB1E8A5396007BFDAB /* pwd2key.h */; };
-		D1E5D7EF1F6BCAE9003615A2 /* ioapi_buf.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D5E1B7CD12500EFFCA4 /* ioapi_buf.h */; };
-		D1E5D7F01F6BCAE9003615A2 /* ioapi_mem.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D601B7CD12500EFFCA4 /* ioapi_mem.h */; };
-		D1E5D7F11F6BCAE9003615A2 /* fileenc.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02D41E8A5396007BFDAB /* fileenc.h */; };
-		D1E5D7F21F6BCAE9003615A2 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D5C1B7CD12500EFFCA4 /* crypt.h */; };
-		D1E5D7F31F6BCAE9003615A2 /* iowin32.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D641B7CD12600EFFCA4 /* iowin32.h */; };
-		D1E5D7F41F6BCAE9003615A2 /* aes_ni.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02CA1E8A5396007BFDAB /* aes_ni.h */; };
-		D1E5D7F51F6BCAE9003615A2 /* minishared.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02C21E8A4A3D007BFDAB /* minishared.h */; };
-		D1E5D7F61F6BCAE9003615A2 /* aes_via_ace.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02CB1E8A5396007BFDAB /* aes_via_ace.h */; };
-		D1E5D7F71F6BCAE9003615A2 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D681B7CD12600EFFCA4 /* unzip.h */; };
-		D1E5D7F81F6BCAE9003615A2 /* NSFileWrapper+LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */; };
-		D1E5D7F91F6BCAE9003615A2 /* LOZIPFileWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1E5D7FA1F6BCAE9003615A2 /* brg_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02D11E8A5396007BFDAB /* brg_endian.h */; };
-		D1E5D7FB1F6BCAE9003615A2 /* aestab.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02D01E8A5396007BFDAB /* aestab.h */; };
-		D1E5D7FC1F6BCAE9003615A2 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02D61E8A5396007BFDAB /* hmac.h */; };
-		D1E5D7FD1F6BCAE9003615A2 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02D91E8A5396007BFDAB /* prng.h */; };
-		D1E5D7FE1F6BCAE9003615A2 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D621B7CD12600EFFCA4 /* ioapi.h */; };
-		D1E5D7FF1F6BCAE9003615A2 /* aesopt.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02CE1E8A5396007BFDAB /* aesopt.h */; };
-		D1E5D8001F6BCAE9003615A2 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = D1D11D6A1B7CD12600EFFCA4 /* zip.h */; };
-		D1E5D8011F6BCAE9003615A2 /* brg_types.h in Headers */ = {isa = PBXBuildFile; fileRef = D1DB02D21E8A5396007BFDAB /* brg_types.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D1C9C790200261EC00788663 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D1D11D1F1B7CCF3500EFFCA4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D1E5D7D51F6BCAE9003615A2;
-			remoteInfo = "LOZIPFileWrapper iOS";
-		};
 		D1D11D351B7CCF3600EFFCA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D1D11D1F1B7CCF3500EFFCA4 /* Project object */;
@@ -141,11 +82,10 @@
 		D1BDEA941CA5C91B00B99751 /* libcompression.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcompression.tbd; path = usr/lib/libcompression.tbd; sourceTree = SDKROOT; };
 		D1BDEA961CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+LOZIPFileWrapper.h"; sourceTree = "<group>"; };
 		D1BDEA971CA5FE2A00B99751 /* NSFileWrapper+LOZIPFileWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileWrapper+LOZIPFileWrapper.m"; sourceTree = "<group>"; };
-		D1C9C7862002609300788663 /* LOZIPFileWrapperTests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LOZIPFileWrapperTests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LOZIPFileWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D2C1B7CCF3500EFFCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D11D2D1B7CCF3500EFFCA4 /* LOZIPFileWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOZIPFileWrapper.h; sourceTree = "<group>"; };
-		D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LOZIPFileWrapperTests Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LOZIPFileWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D11D391B7CCF3600EFFCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D11D3A1B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LOZIPFileWrapperTests.m; sourceTree = "<group>"; };
 		D1D11D5C1B7CD12500EFFCA4 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = minizip/crypt.h; sourceTree = SOURCE_ROOT; };
@@ -191,18 +131,9 @@
 		D1DB02DB1E8A5396007BFDAB /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
 		D1DB02DC1E8A5396007BFDAB /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		D1DB02DD1E8A5396007BFDAB /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		D1E5D8061F6BCAE9003615A2 /* LOZIPFileWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LOZIPFileWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D1C9C77A2002609300788663 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1C9C792200261F700788663 /* LOZIPFileWrapper.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D1D11D241B7CCF3500EFFCA4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,15 +148,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D11D341B7CCF3600EFFCA4 /* LOZIPFileWrapper.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D1E5D7E81F6BCAE9003615A2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1E5D7E91F6BCAE9003615A2 /* libcompression.tbd in Frameworks */,
-				D1E5D7EA1F6BCAE9003615A2 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,9 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */,
-				D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac.xctest */,
-				D1E5D8061F6BCAE9003615A2 /* LOZIPFileWrapper.framework */,
-				D1C9C7862002609300788663 /* LOZIPFileWrapperTests iOS.xctest */,
+				D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -396,59 +316,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1E5D7EB1F6BCAE9003615A2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1E5D7EC1F6BCAE9003615A2 /* aes.h in Headers */,
-				D1E5D7ED1F6BCAE9003615A2 /* sha1.h in Headers */,
-				D1E5D7EE1F6BCAE9003615A2 /* pwd2key.h in Headers */,
-				D1E5D7EF1F6BCAE9003615A2 /* ioapi_buf.h in Headers */,
-				D1E5D7F01F6BCAE9003615A2 /* ioapi_mem.h in Headers */,
-				D1E5D7F11F6BCAE9003615A2 /* fileenc.h in Headers */,
-				D1E5D7F21F6BCAE9003615A2 /* crypt.h in Headers */,
-				D1E5D7F31F6BCAE9003615A2 /* iowin32.h in Headers */,
-				D1E5D7F41F6BCAE9003615A2 /* aes_ni.h in Headers */,
-				D1E5D7F51F6BCAE9003615A2 /* minishared.h in Headers */,
-				D1E5D7F61F6BCAE9003615A2 /* aes_via_ace.h in Headers */,
-				D1E5D7F71F6BCAE9003615A2 /* unzip.h in Headers */,
-				D1E5D7F81F6BCAE9003615A2 /* NSFileWrapper+LOZIPFileWrapper.h in Headers */,
-				D1E5D7F91F6BCAE9003615A2 /* LOZIPFileWrapper.h in Headers */,
-				D1E5D7FA1F6BCAE9003615A2 /* brg_endian.h in Headers */,
-				D1E5D7FB1F6BCAE9003615A2 /* aestab.h in Headers */,
-				D1E5D7FC1F6BCAE9003615A2 /* hmac.h in Headers */,
-				D1E5D7FD1F6BCAE9003615A2 /* prng.h in Headers */,
-				D1E5D7FE1F6BCAE9003615A2 /* ioapi.h in Headers */,
-				D1E5D7FF1F6BCAE9003615A2 /* aesopt.h in Headers */,
-				D1E5D8001F6BCAE9003615A2 /* zip.h in Headers */,
-				D1E5D8011F6BCAE9003615A2 /* brg_types.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D1C9C7752002609300788663 /* LOZIPFileWrapperTests iOS */ = {
+		D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1C9C7832002609300788663 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests iOS" */;
-			buildPhases = (
-				D1C9C7782002609300788663 /* Sources */,
-				D1C9C77A2002609300788663 /* Frameworks */,
-				D1C9C77C2002609300788663 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D1C9C791200261EC00788663 /* PBXTargetDependency */,
-			);
-			name = "LOZIPFileWrapperTests iOS";
-			productName = LOZIPFileWrapperTests;
-			productReference = D1C9C7862002609300788663 /* LOZIPFileWrapperTests iOS.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper Mac" */;
+			buildConfigurationList = D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper" */;
 			buildPhases = (
 				D1D11D231B7CCF3500EFFCA4 /* Sources */,
 				D1D11D241B7CCF3500EFFCA4 /* Frameworks */,
@@ -459,14 +332,14 @@
 			);
 			dependencies = (
 			);
-			name = "LOZIPFileWrapper Mac";
+			name = LOZIPFileWrapper;
 			productName = LOZIPFileWrapper;
 			productReference = D1D11D281B7CCF3500EFFCA4 /* LOZIPFileWrapper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac */ = {
+		D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests Mac" */;
+			buildConfigurationList = D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests" */;
 			buildPhases = (
 				D1D11D2F1B7CCF3600EFFCA4 /* Sources */,
 				D1D11D301B7CCF3600EFFCA4 /* Frameworks */,
@@ -477,28 +350,10 @@
 			dependencies = (
 				D1D11D361B7CCF3600EFFCA4 /* PBXTargetDependency */,
 			);
-			name = "LOZIPFileWrapperTests Mac";
+			name = LOZIPFileWrapperTests;
 			productName = LOZIPFileWrapperTests;
-			productReference = D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac.xctest */;
+			productReference = D1D11D331B7CCF3600EFFCA4 /* LOZIPFileWrapperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D1E5D7D51F6BCAE9003615A2 /* LOZIPFileWrapper iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D1E5D8031F6BCAE9003615A2 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper iOS" */;
-			buildPhases = (
-				D1E5D7D61F6BCAE9003615A2 /* Sources */,
-				D1E5D7E81F6BCAE9003615A2 /* Frameworks */,
-				D1E5D7EB1F6BCAE9003615A2 /* Headers */,
-				D1E5D8021F6BCAE9003615A2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "LOZIPFileWrapper iOS";
-			productName = LOZIPFileWrapper;
-			productReference = D1E5D8061F6BCAE9003615A2 /* LOZIPFileWrapper.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -510,9 +365,6 @@
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Christopher Atlan";
 				TargetAttributes = {
-					D1C9C7752002609300788663 = {
-						ProvisioningStyle = Manual;
-					};
 					D1D11D271B7CCF3500EFFCA4 = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -534,31 +386,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */,
-				D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests Mac */,
-				D1E5D7D51F6BCAE9003615A2 /* LOZIPFileWrapper iOS */,
-				D1C9C7752002609300788663 /* LOZIPFileWrapperTests iOS */,
+				D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper */,
+				D1D11D321B7CCF3600EFFCA4 /* LOZIPFileWrapperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D1C9C77C2002609300788663 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1C9C77D2002609300788663 /* HelloWorld.txt in Resources */,
-				D1C9C77E2002609300788663 /* Empty in Resources */,
-				D1C9C77F2002609300788663 /* Overwrite2.zip in Resources */,
-				D17969E5203314DB004215EC /* Test.bundle.zip in Resources */,
-				D17969E220330ECE004215EC /* macosx_metadata_test.zip in Resources */,
-				D1C9C7802002609300788663 /* HelloWorld.zip in Resources */,
-				D1C9C7812002609300788663 /* PasswordArchive.zip in Resources */,
-				D17969E020330ECE004215EC /* TestfileRes.zip in Resources */,
-				D1C9C7822002609300788663 /* Overwrite1.zip in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D1D11D261B7CCF3500EFFCA4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -582,24 +416,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1E5D8021F6BCAE9003615A2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D1C9C7782002609300788663 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1C9C7792002609300788663 /* LOZIPFileWrapperTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D1D11D231B7CCF3500EFFCA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -632,95 +451,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1E5D7D61F6BCAE9003615A2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1E5D7D71F6BCAE9003615A2 /* NSFileWrapper+LOZIPFileWrapper.m in Sources */,
-				D1E5D7D81F6BCAE9003615A2 /* aestab.c in Sources */,
-				D1E5D7D91F6BCAE9003615A2 /* pwd2key.c in Sources */,
-				D1E5D7DA1F6BCAE9003615A2 /* minishared.c in Sources */,
-				D1E5D7DB1F6BCAE9003615A2 /* aeskey.c in Sources */,
-				D1E5D7DC1F6BCAE9003615A2 /* crypt.c in Sources */,
-				D1E5D7DD1F6BCAE9003615A2 /* ioapi_mem.c in Sources */,
-				D1E5D7DE1F6BCAE9003615A2 /* fileenc.c in Sources */,
-				D1E5D7DF1F6BCAE9003615A2 /* aes_ni.c in Sources */,
-				D1E5D7E01F6BCAE9003615A2 /* hmac.c in Sources */,
-				D1E5D7E11F6BCAE9003615A2 /* ioapi.c in Sources */,
-				D1E5D7E21F6BCAE9003615A2 /* sha1.c in Sources */,
-				D1E5D7E31F6BCAE9003615A2 /* zip.c in Sources */,
-				D1E5D7E41F6BCAE9003615A2 /* unzip.c in Sources */,
-				D1E5D7E51F6BCAE9003615A2 /* aescrypt.c in Sources */,
-				D1E5D7E61F6BCAE9003615A2 /* prng.c in Sources */,
-				D1E5D7E71F6BCAE9003615A2 /* LOZIPFileWrapper.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D1C9C791200261EC00788663 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D1E5D7D51F6BCAE9003615A2 /* LOZIPFileWrapper iOS */;
-			targetProxy = D1C9C790200261EC00788663 /* PBXContainerItemProxy */;
-		};
 		D1D11D361B7CCF3600EFFCA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper Mac */;
+			target = D1D11D271B7CCF3500EFFCA4 /* LOZIPFileWrapper */;
 			targetProxy = D1D11D351B7CCF3600EFFCA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		D1C9C7842002609300788663 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LOZIPFileWrapperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "app.letteropener.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		D1C9C7852002609300788663 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LOZIPFileWrapperTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "app.letteropener.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
-			};
-			name = Release;
-		};
 		D1D11D3C1B7CCF3600EFFCA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -774,6 +519,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = app.letteropener.LOZIPFileWrapper;
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -782,6 +529,7 @@
 		D1D11D3D1B7CCF3600EFFCA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -827,6 +575,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = app.letteropener.LOZIPFileWrapper;
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -906,65 +656,9 @@
 			};
 			name = Release;
 		};
-		D1E5D8041F6BCAE9003615A2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = LOZIPFileWrapper/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-DHAVE_AES=1";
-				PRODUCT_NAME = LOZIPFileWrapper;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D1E5D8051F6BCAE9003615A2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = LOZIPFileWrapper/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = "-DHAVE_AES=1";
-				PRODUCT_NAME = LOZIPFileWrapper;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D1C9C7832002609300788663 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D1C9C7842002609300788663 /* Debug */,
-				D1C9C7852002609300788663 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D1D11D221B7CCF3500EFFCA4 /* Build configuration list for PBXProject "LOZIPFileWrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -974,7 +668,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper Mac" */ = {
+		D1D11D3E1B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1D11D3F1B7CCF3600EFFCA4 /* Debug */,
@@ -983,20 +677,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests Mac" */ = {
+		D1D11D411B7CCF3600EFFCA4 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1D11D421B7CCF3600EFFCA4 /* Debug */,
 				D1D11D431B7CCF3600EFFCA4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D1E5D8031F6BCAE9003615A2 /* Build configuration list for PBXNativeTarget "LOZIPFileWrapper iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D1E5D8041F6BCAE9003615A2 /* Debug */,
-				D1E5D8051F6BCAE9003615A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
