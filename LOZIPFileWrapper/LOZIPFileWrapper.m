@@ -413,6 +413,15 @@ NSString *const LOZIPFileWrapperMinizipErrorCode = @"LOZIPFileWrapperErrorDomain
 
 - (NSData *)contentsAtPath:(NSString *)path error:(NSError **)error
 {
+    if ([path length] == 0)
+    {
+        if (error)
+        {
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"file not found" };
+            *error = [NSError errorWithDomain:LOZIPFileWrapperErrorDomain code:LOZIPFileWrapperErrorFileNotFound userInfo:userInfo];
+        }
+        return nil;
+    }
     int ret = unzLocateFile(zip, [path UTF8String], NULL);
     if (ret == UNZ_END_OF_LIST_OF_FILE)
     {
